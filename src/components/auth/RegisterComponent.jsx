@@ -719,6 +719,8 @@ export default function RegisterComponent({parent}) {
                                     onChange={(e) => {
                                         setUser({weight: e.target.value});
                                     }}
+
+                                    
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     placeholder={"weight"}
