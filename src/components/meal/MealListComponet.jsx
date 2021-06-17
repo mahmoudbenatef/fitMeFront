@@ -1,10 +1,13 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Table,Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 function MealListComponet() {
   const [meals, setmeals] = useState([]);
+  const [render, setrender] = useState(false);
+  const history = useHistory();
   useEffect(() => {
     const fetchApi = async () => {
       const fetchedMeals = await axios.get("http://localhost:3001/meals");
@@ -13,7 +16,7 @@ function MealListComponet() {
       }
     };
     fetchApi();
-  }, []);
+  }, [render]);
   return (
     <div>
       <Table striped bordered hover>
@@ -24,23 +27,36 @@ function MealListComponet() {
             <th>recipe</th>
             <th>meal type</th>
             <th>not allowed category</th>
+            <th>delete</th>
           </tr>
         </thead>
         <tbody>
-          {meals.map((currentMeal,index) => (
-            <tr>
-              <td>{index+1}</td>
+          {meals.map((currentMeal, index) => (
+            <tr key={currentMeal._id}>
+              <td>{index + 1}</td>
               <td>{currentMeal.name}</td>
               <td>{currentMeal.recipe}</td>
               <td>{currentMeal.mealType}</td>
               <td>{currentMeal.notAllowedTo[0]?.category.name}</td>
-
+              <td>
+                <button
+                  onClick={async () => {
+                    await axios.delete(
+                      "http://localhost:3001/meals/" + currentMeal._id
+                    );
+                    setrender(!render);
+                  }}
+                >
+                  delete
+                </button>
+              </td>
             </tr>
           ))}
-
-       
         </tbody>
       </Table>
+      <Button onClick={()=>{
+           history.push("/meals");
+      }}>add meal</Button>
     </div>
   );
 }
