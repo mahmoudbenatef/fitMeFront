@@ -13,6 +13,8 @@ import RegisterComponent from "./components/auth/RegisterComponent";
 import NavbarComponent from "./components/user/NavbarComponent";
 import UserHomeComponent from "./components/user/UserHomeComponent";
 import { authContext } from "./contexts/authContext";
+import MealComponet from "./components/meal/MealComponet";
+import MealListComponet from "./components/meal/MealListComponet";
 function App(props) {
   const authentication = useContext(authContext);
   console.log(authentication);
@@ -42,6 +44,12 @@ function App(props) {
             </Route>
             <Route path="/admin">
               <AdminHomeComponent />
+            </Route>
+            <Route path="/meals">
+              <MealComponet/>
+            </Route>
+            <Route path="/mealsList">
+              <MealListComponet/>
             </Route>
           </Switch>
         </div>
