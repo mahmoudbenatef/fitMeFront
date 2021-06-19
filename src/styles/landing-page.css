@@ -1,0 +1,21 @@
+#parent {
+  background-color: black;
+  height: 100vh;
+}
+
+h1 {
+  color: green;
+}
+
+.video {
+  background-color: chocolate;
+  height: 100vh;
+}
+.first-section {
+  background-color: cyan;
+  height: 100vh;
+}
+.second-section {
+  background-color: darkmagenta;
+  height: 100vh;
+}
