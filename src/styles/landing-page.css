@@ -1,6 +1,7 @@
 #parent {
   background-color: black;
   height: 100vh;
+  overflow-y: scroll;
 }
 
 h1 {
@@ -11,11 +12,14 @@ h1 {
   background-color: chocolate;
   height: 100vh;
 }
+
+section {
+  height: 100vh;
+  scroll-snap-align: start;
+}
 .first-section {
   background-color: cyan;
-  height: 100vh;
 }
 .second-section {
   background-color: darkmagenta;
-  height: 100vh;
 }
