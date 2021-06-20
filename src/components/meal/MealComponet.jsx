@@ -43,22 +43,22 @@ function MealComponet() {
   const saveMeal = async (e) => {
     e.preventDefault();
     if (id) {
-      const mealToSave = await axios.patch(`${BASE_URL}meals/${id}`, {
+      let mealToSave = await axios.patch(`${BASE_URL}meals/${id}`, {
         name,
         recipe,
         mealType,
         notAllowedTo: [{ category: notAllowedCat }],
       });
       console.log(mealToSave);
-    }
-    const mealToSave = await axios.post(`${BASE_URL}meals`, {
+    }else{
+    let mealToSave = await axios.post(`${BASE_URL}meals`, {
       name,
       recipe,
       mealType,
       notAllowedTo: [{ category: notAllowedCat }],
     });
+  }
     history.push(`/mealsList`);
-    console.log(mealToSave);
   };
   useEffect(() => {
     const fetchApi = async () => {
