@@ -1,5 +1,5 @@
 import React from "react";
-import { Table,Button } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +8,7 @@ function MealListComponet() {
   const [meals, setmeals] = useState([]);
   const [render, setrender] = useState(false);
   const history = useHistory();
+ 
   useEffect(() => {
     const fetchApi = async () => {
       const fetchedMeals = await axios.get("http://localhost:3001/meals");
@@ -15,6 +16,7 @@ function MealListComponet() {
         setmeals(fetchedMeals.data);
       }
     };
+  
     fetchApi();
   }, [render]);
   return (
@@ -28,6 +30,7 @@ function MealListComponet() {
             <th>meal type</th>
             <th>not allowed category</th>
             <th>delete</th>
+            <th>update</th>
           </tr>
         </thead>
         <tbody>
@@ -50,13 +53,26 @@ function MealListComponet() {
                   delete
                 </button>
               </td>
+              <td>
+                <Button
+                  onClick={() => {
+                    history.push("/meals?id=" + currentMeal._id);
+                  }}
+                >
+                  update
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <Button onClick={()=>{
-           history.push("/meals");
-      }}>add meal</Button>
+      <Button
+        onClick={() => {
+          history.push("/meals");
+        }}
+      >
+        add meal
+      </Button>
     </div>
   );
 }

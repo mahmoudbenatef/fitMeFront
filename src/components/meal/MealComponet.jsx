@@ -1,4 +1,4 @@
-import { InputLabel  } from "@material-ui/core";
+import { InputLabel } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import React from "react";
 import { useEffect, useState } from "react";
@@ -30,6 +30,9 @@ function MealComponet() {
   const [notAllowedTo, setNotAllowedTo] = useState([]);
   const [notAllowedCat, setnotAllowedCat] = useState("");
   let history = useHistory();
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const id = params.get("id");
   const handelMealChange = (event) => {
     setMealType(event.target.value);
   };
@@ -39,13 +42,22 @@ function MealComponet() {
   };
   const saveMeal = async (e) => {
     e.preventDefault();
+    if (id) {
+      const mealToSave = await axios.patch(`${BASE_URL}meals/${id}`, {
+        name,
+        recipe,
+        mealType,
+        notAllowedTo: [{ category: notAllowedCat }],
+      });
+      console.log(mealToSave);
+    }
     const mealToSave = await axios.post(`${BASE_URL}meals`, {
       name,
       recipe,
       mealType,
       notAllowedTo: [{ category: notAllowedCat }],
     });
-    history.push(`/mealsList`)
+    history.push(`/mealsList`);
     console.log(mealToSave);
   };
   useEffect(() => {
@@ -59,6 +71,19 @@ function MealComponet() {
     };
     fetchApi();
   }, []);
+  useEffect(() => {
+    if (id) {
+      const fetchApi = async () => {
+        console.log("hello");
+        const currentMeal = await axios.get(`${BASE_URL}meals/${id}`);
+        console.log(currentMeal.data);
+        setName(currentMeal.data.name);
+        setRecipe(currentMeal.data.recipe);
+        setnotAllowedCat(currentMeal.data.notAllowedTo[0].category.name);
+      };
+      fetchApi();
+    }
+  }, []);
   return (
     <div>
       <Form>
@@ -67,6 +92,7 @@ function MealComponet() {
           <Form.Control
             type="text"
             placeholder="Enter meal name"
+            value={name}
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -77,6 +103,7 @@ function MealComponet() {
           <Form.Control
             as="textarea"
             placeholder="Enter meal recipe"
+            value={recipe}
             onChange={(e) => {
               setRecipe(e.target.value);
             }}
