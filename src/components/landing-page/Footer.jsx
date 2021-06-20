@@ -8,11 +8,13 @@ export default function Footer() {
         <div className="col footer_about">
           <h3>Fit Me</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            aliquid, inventore veritatis, a beatae asperiores eveniet ex
-            repudiandae voluptatibus tempora, optio nam harum temporibus
-            tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Nisi recusandae dolore molestiae quis iste.
+            a radical journey of transformation in the first military themed
+            residential boot camp in Egypt and the Middle East, where
+            discipline, fun and adventure go hand in hand; where your excuses
+            are handed over at the door and giving up is the only luxury we
+            can’t afford. We will nourish your change plans, both short and long
+            term, towards a different version of you. We train minds as well as
+            bodies to walk the road to absolute self-mastery
           </p>
         </div>
         <div className="col justify-content-end footer_right">

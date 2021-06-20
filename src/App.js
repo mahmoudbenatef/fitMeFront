@@ -32,7 +32,7 @@ function App(props) {
               <Redirect to={{ pathname: "/login" }} />
             )}
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <LandingPageComponent />
             </Route>
             <Route path="/user">

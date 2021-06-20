@@ -18,8 +18,33 @@ section {
   scroll-snap-align: start;
 }
 .first-section {
-  background-color: cyan;
+  background-image: url("../assets/wCNanCt.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  min-width: 100%;
 }
 .second-section {
-  background-color: darkmagenta;
+  background-image: url("../assets/61TBfvTwOqL._AC_SX679_.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  min-width: 100%;
+}
+
+.paragraph1 {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  color: black;
+}
+
+.paragraph2 {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+  font-style: italic;
 }
