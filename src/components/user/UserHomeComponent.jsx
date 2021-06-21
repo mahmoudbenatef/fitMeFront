@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
-
+import QuestionerComponent from "../userDashboard/QuestionerComponent"
+import AvailCampsComponent from "../userDashboard/AvailCampsComponent"
 export default function UserHomeComponent() {
   let { path} = useRouteMatch();
   const authentication = useContext(authContext);
@@ -19,22 +20,16 @@ export default function UserHomeComponent() {
   }, []);
   return (
       <>
-        <h1>Hello user</h1>
-        {/* <RateComponent bookId="609964ba4d02fa267a53acf4" userRating={2} size="small"></RateComponent>
-       <ShelfComponent bookId="609964ba4d02fa267a53acf4" ></ShelfComponent> */}
         <Switch>
 
-          {/*<Route key={1} path={`${path}/books`}>*/}
-          {/*  <BooksCardContainerComponent></BooksCardContainerComponent>*/}
-          {/*</Route>*/}
-
-          {/* <Route key={2} path={`${path}/authors`}>
-            <AuthorsList />
+          <Route key={1} path={`${path}/questioner`}>
+            <QuestionerComponent/>
           </Route>
 
-            <Route key={3} path={`${path}/authors/:id"`}>
-                <AuthorDetails />
-            </Route> */}
+           <Route key={2} path={`${path}/camps`}>
+            <AvailCampsComponent/>
+          </Route>
+
 
             {/*<Route path="/authors/:id">*/}
             {/*  <AuthorDetails />*/}

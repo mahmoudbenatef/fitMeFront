@@ -1,7 +1,10 @@
 import { useContext, useEffect } from "react";
 import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
-
+import { CategoryProvider } from "../../contexts/categoryContext";
+import { CampProvider } from "../../contexts/campContext";
+import CategoryComponent from "../adminDashboard/category/CategoryComponent";
+import CampComponent from "../adminDashboard/camp/CampComponent.jsx"
 export default function AdminHomeComponent() {
   let { path, url } = useRouteMatch();
   const authentication = useContext(authContext);
@@ -21,19 +24,24 @@ export default function AdminHomeComponent() {
   return (
 
     <>
-      <h1>Holla Admin</h1>
       <Switch>
         {/*<Route key={1} path={`${path}/books`}>*/}
         {/*  <BooksComponent />*/}
         {/*</Route>*/}
 
-        {/*<Route key={2} path={`${path}/categories`}>*/}
-        {/*  <CategoryProvider>*/}
-        {/*    <CategoryComponent />*/}
-        {/*  </CategoryProvider>*/}
-        {/*</Route>*/}
+        <Route key={2} path={`${path}/categories`}>
+          <CategoryProvider>
+            <CategoryComponent />
+          </CategoryProvider>
+        </Route>
+
+
+        <Route key={3} path={`${path}/camps`}>
+          <CampProvider>
+            <CampComponent />
+          </CampProvider>
+        </Route>
         {/*<Route key={3} path={`${path}/authors`}>*/}
-        {/*  <AdmiAuthorsComponent />*/}
         {/*</Route>*/}
       </Switch>
     </>
