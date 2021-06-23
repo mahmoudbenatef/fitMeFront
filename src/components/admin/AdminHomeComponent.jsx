@@ -7,7 +7,7 @@ import CategoryComponent from "../adminDashboard/category/CategoryComponent";
 import CampComponent from "../adminDashboard/camp/CampComponent.jsx"
 import MealComponet from "../../components/meal/MealComponet";
 import MealListComponet from "../../components/meal/MealListComponet";
-
+import PlanComponent from "../adminDashboard/campPlan/PlanComponent"
 export default function AdminHomeComponent() {
   let { path, url } = useRouteMatch();
   const authentication = useContext(authContext);
@@ -51,8 +51,9 @@ export default function AdminHomeComponent() {
             <Route path={`${path}/mealsList`}>
               <MealListComponet/>
             </Route>
-        {/*<Route key={3} path={`${path}/authors`}>*/}
-        {/*</Route>*/}
+        <Route key={3} path={`${path}/camp/:id/plan`}>
+          <PlanComponent/>
+        </Route> 
       </Switch>
     </>
   );

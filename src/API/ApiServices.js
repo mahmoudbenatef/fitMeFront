@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API, booksURL} from "./urls";
+import { API, booksURL } from "./urls";
 
 export const ApiServices = {
   register(user) {
@@ -25,8 +25,8 @@ export const ApiServices = {
     });
   },
 
-  updateQuestioner(_id,questioner) {
-    return axios.put(API.questioner()+_id, questioner, {
+  updateQuestioner(_id, questioner) {
+    return axios.put(API.questioner() + _id, questioner, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -34,7 +34,7 @@ export const ApiServices = {
   },
 
   getQuestioner(userID) {
-    return axios.get(API.questioner() +"user/"+userID, {
+    return axios.get(API.questioner() + "user/" + userID, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -56,8 +56,8 @@ export const ApiServices = {
     });
   },
 
-  addUsersTocamp(campID,userID) {
-    return axios.get(API.camp()+campID+"/"+userID, {
+  addUsersTocamp(campID, userID) {
+    return axios.get(API.camp() + campID + "/" + userID, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -67,7 +67,8 @@ export const ApiServices = {
     if (queryParams) return axios.get(`${API.category()}${queryParams}`, {
       headers: {
         Authorization: `JWT ${API.token()}`,
-      }});
+      }
+    });
     return axios.get(API.category(), {
       headers: {
         Authorization: `JWT ${API.token()}`,
@@ -79,7 +80,8 @@ export const ApiServices = {
     if (queryParams) return axios.get(`${API.camp()}${queryParams}`, {
       headers: {
         Authorization: `JWT ${API.token()}`,
-      }});
+      }
+    });
     return axios.get(API.camp(), {
       headers: {
         Authorization: `JWT ${API.token()}`,
@@ -87,7 +89,7 @@ export const ApiServices = {
     });
   },
   getAvailCamps() {
-    return axios.get(API.camp()+'availCamps', {
+    return axios.get(API.camp() + 'availCamps', {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -123,13 +125,24 @@ export const ApiServices = {
 
   editCamp(id, date) {
     return axios.put(
-        API.camp() + id,
-        { date: date },
-        {
-          headers: {
-            Authorization: `JWT ${API.token()}`,
-          },
-        }
+      API.camp() + id,
+      { date: date },
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
     );
   },
+  getCamp(id) {
+    return axios.get(
+      API.camp() + id,
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+
+  }
 };
