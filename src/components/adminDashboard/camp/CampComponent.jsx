@@ -2,7 +2,7 @@ import { useState } from "react";
 import  EditAndCampConponent from "./EditAndCampConponent";
 import ListCampsComponent  from "./ListCampsComponent";
 
-export default function () {
+export default function CampComponent () {
     const [editOrCreate, setEditOrCreate] = useState({status: 'create'})
     const [camp, setCamp] = useState({status: 'add', value: {date: ''}})
     return (
