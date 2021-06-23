@@ -1,0 +1,50 @@
+#parent {
+  background-color: black;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+h1 {
+  color: green;
+}
+
+.video {
+  background-color: chocolate;
+  height: 100vh;
+}
+
+section {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+.first-section {
+  background-image: url("../assets/wCNanCt.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  min-width: 100%;
+}
+.second-section {
+  background-image: url("../assets/61TBfvTwOqL._AC_SX679_.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  min-width: 100%;
+}
+
+.paragraph1 {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  color: black;
+}
+
+.paragraph2 {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+  font-style: italic;
+}
