@@ -144,5 +144,39 @@ export const ApiServices = {
       }
     );
 
-  }
+  },
+
+  getBreakfast() {
+    return axios.get(
+      API.meal() + 'breakfast',
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+  },
+
+  getLaunch() {
+    return axios.get(
+      API.meal() + 'launch',
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+  },
+
+  getDinner() {
+    return axios.get(
+      API.meal() + 'dinner',
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+  },
+
 };
