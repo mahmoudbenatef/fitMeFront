@@ -8,6 +8,7 @@ import CampComponent from "../adminDashboard/camp/CampComponent.jsx"
 import MealComponet from "../../components/meal/MealComponet";
 import MealListComponet from "../../components/meal/MealListComponet";
 import PlanComponent from "../adminDashboard/campPlan/PlanComponent"
+import DayPlanComponent from "../adminDashboard/campPlan/DayPlanComponent"
 export default function AdminHomeComponent() {
   let { path, url } = useRouteMatch();
   const authentication = useContext(authContext);
@@ -48,12 +49,16 @@ export default function AdminHomeComponent() {
         <Route path={`${path}/meals`}>
               <MealComponet/>
             </Route>
-            <Route path={`${path}/mealsList`}>
+            <Route exact path={`${path}/mealsList`}>
               <MealListComponet/>
             </Route>
-        <Route key={3} path={`${path}/camp/:id/plan`}>
+        <Route key={3} exact path={`${path}/camp/:id/plan`}>
           <PlanComponent/>
         </Route> 
+        <Route exact key={4} path={`${path}/camp/:id/plan/:date`}>
+          <DayPlanComponent/>
+        </Route> 
+        {/*  */}
       </Switch>
     </>
   );
