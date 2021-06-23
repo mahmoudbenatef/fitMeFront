@@ -58,15 +58,15 @@ function MealComponet() {
       // notAllowedTo: [{ category: notAllowedCat }],
     });
   }
-    history.push(`/mealsList`);
+    history.push(`/admin/mealsList`);
   };
   useEffect(() => {
     const fetchApi = async () => {
       console.log("hello");
-      const categories = await axios.get(`${BASE_URL}categories`);
+      const categories = await axios.get(`${BASE_URL}category`);
       if (categories) {
         console.log();
-        setNotAllowedTo([...categories.data]);
+        setNotAllowedTo([...categories.data.data]);
       }
     };
     fetchApi();
@@ -122,7 +122,7 @@ function MealComponet() {
         <select value={notAllowedCat} onChange={handelNotAllowedCatChange}>
           {notAllowedTo.map((cat) => (
             <option key={cat._id} value={cat._id}>
-              {cat.name}
+              {cat.label}
             </option>
           ))}
         </select>

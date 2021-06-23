@@ -68,7 +68,7 @@ function MealListComponet() {
       </Table>
       <Button
         onClick={() => {
-          history.push("/meals");
+          history.push("/admin/meals");
         }}
       >
         add meal

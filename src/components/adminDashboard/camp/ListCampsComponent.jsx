@@ -3,8 +3,9 @@ import { ApiServices } from "../../../API/ApiServices";
 import {campContext} from "../../../contexts/campContext";
 import LoadingCompoenet from "../../reusableComponents/LoadingComponent";
 import PaginationComponent from "../../reusableComponents/PaginationComponent";
+import { Link, useHistory } from "react-router-dom";
 
-export default function ({ changeState }) {
+export default function ListCampsComponent ({ changeState }) {
   const [camps, setCamps] = useState([]);
   const cmpContext = useContext(campContext)
   const [page, setPage] = useState(1);
@@ -56,7 +57,17 @@ export default function ({ changeState }) {
                       return(
                       <tr key={cat._id.toString()}>
                         <td>{index + 1}</td>
-                        <td>{cat.date}</td>
+                        <td>
+                          
+                  
+                        <Link
+                        className="nav-link"
+                        to={ `/admin/camp/${cat._id}/plan` }
+                        >
+                        {cat.date}
+                    </Link>      
+                          </td>
+                        
                         <td>
                           {
 
