@@ -47,7 +47,7 @@ function MealComponet() {
         name,
         recipe,
         mealType,
-        notAllowedTo: [{ category: notAllowedCat }],
+        // notAllowedTo: [{ category: notAllowedCat }],
       });
       console.log(mealToSave);
     }else{
@@ -55,7 +55,7 @@ function MealComponet() {
       name,
       recipe,
       mealType,
-      notAllowedTo: [{ category: notAllowedCat }],
+      // notAllowedTo: [{ category: notAllowedCat }],
     });
   }
     history.push(`/mealsList`);

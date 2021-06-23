@@ -3,6 +3,7 @@ import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import QuestionerComponent from "../userDashboard/QuestionerComponent"
 import AvailCampsComponent from "../userDashboard/AvailCampsComponent"
+import DayPlan from "../plan/DayPlan";
 export default function UserHomeComponent() {
   let { path} = useRouteMatch();
   const authentication = useContext(authContext);
@@ -34,6 +35,9 @@ export default function UserHomeComponent() {
             {/*<Route path="/authors/:id">*/}
             {/*  <AuthorDetails />*/}
             {/*</Route>*/}
+            <Route exact path={`${path}/plan`}>
+             <DayPlan/>
+            </Route>
 
         </Switch>
 
