@@ -6,7 +6,9 @@ export const API = {
   signin: () => `${BASE_URL}/users/signin`,
   getUsers: () => `${BASE_URL}/users/`,
   category: () => `${BASE_URL}/category/`,
+  camp: () => `${BASE_URL}/camp/`,
   token: () => mySessionStorage.getToken(),
+  questioner:()=> `${BASE_URL}/questioner/`
 };
 
 export const BOOK_API = {
