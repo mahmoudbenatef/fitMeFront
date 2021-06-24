@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API, booksURL} from "./urls";
+import { API, booksURL } from "./urls";
 
 export const ApiServices = {
   register(user) {
@@ -25,8 +25,8 @@ export const ApiServices = {
     });
   },
 
-  updateQuestioner(_id,questioner) {
-    return axios.put(API.questioner()+_id, questioner, {
+  updateQuestioner(_id, questioner) {
+    return axios.put(API.questioner() + _id, questioner, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -34,7 +34,7 @@ export const ApiServices = {
   },
 
   getQuestioner(userID) {
-    return axios.get(API.questioner() +"user/"+userID, {
+    return axios.get(API.questioner() + "user/" + userID, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -56,8 +56,8 @@ export const ApiServices = {
     });
   },
 
-  addUsersTocamp(campID,userID) {
-    return axios.get(API.camp()+campID+"/"+userID, {
+  addUsersTocamp(campID, userID) {
+    return axios.get(API.camp() + campID + "/" + userID, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -67,7 +67,8 @@ export const ApiServices = {
     if (queryParams) return axios.get(`${API.category()}${queryParams}`, {
       headers: {
         Authorization: `JWT ${API.token()}`,
-      }});
+      }
+    });
     return axios.get(API.category(), {
       headers: {
         Authorization: `JWT ${API.token()}`,
@@ -79,7 +80,8 @@ export const ApiServices = {
     if (queryParams) return axios.get(`${API.camp()}${queryParams}`, {
       headers: {
         Authorization: `JWT ${API.token()}`,
-      }});
+      }
+    });
     return axios.get(API.camp(), {
       headers: {
         Authorization: `JWT ${API.token()}`,
@@ -87,7 +89,7 @@ export const ApiServices = {
     });
   },
   getAvailCamps() {
-    return axios.get(API.camp()+'availCamps', {
+    return axios.get(API.camp() + 'availCamps', {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
@@ -123,13 +125,113 @@ export const ApiServices = {
 
   editCamp(id, date) {
     return axios.put(
-        API.camp() + id,
-        { date: date },
-        {
-          headers: {
-            Authorization: `JWT ${API.token()}`,
-          },
-        }
+      API.camp() + id,
+      { date: date },
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
     );
+  },
+  getCamp(id) {
+    return axios.get(
+      API.camp() + id,
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+
+  },
+
+  getBreakfast() {
+    return axios.get(
+      API.meal() + 'breakfast',
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+  },
+
+  getLaunch() {
+    return axios.get(
+      API.meal() + 'launch',
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+  },
+
+  getDinner() {
+    return axios.get(
+      API.meal() + 'dinner',
+      {
+        headers: {
+          Authorization: `JWT ${API.token()}`,
+        },
+      }
+    );
+  },
+  regularPlan(plan) {
+    return axios.post(API.plan() + 'regular', plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+
+      },
+    });
+  },
+  exceptionalPlan(plan) {
+    return axios.post(API.plan() + 'exceptional', plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+
+      },
+    });
+  },
+  getRegularPlan(camp, date) {
+    return axios.get(API.plan() + `regular/${camp}/${date}`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
+  getExceptionalPlan(camp, date, user) {
+    return axios.get(API.plan() + `exceptional/${camp}/${date}/${user}`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
+  updateRegularPlan(camp, date, plan) {
+    return axios.put(API.plan() + `regular/${camp}/${date}`, plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+
+  },
+  updateExceptionalPlan(camp, date, plan, user) {
+    return axios.put(API.plan() + `exceptional/${camp}/${date}/${user}`, plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+
+  },
+
+  getExceptionalUsers(camp, date) {
+    return axios.get(API.user() + `exceptional`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
   },
 };

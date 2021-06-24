@@ -3,7 +3,7 @@ import { ApiServices } from "../../../API/ApiServices";
 import {campContext} from "../../../contexts/campContext";
 import LoadingCompoenet from "../../reusableComponents/LoadingComponent";
 import PaginationComponent from "../../reusableComponents/PaginationComponent";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ListCampsComponent ({ changeState }) {
   const [camps, setCamps] = useState([]);
@@ -64,7 +64,7 @@ export default function ListCampsComponent ({ changeState }) {
                         className="nav-link"
                         to={ `/admin/camp/${cat._id}/plan` }
                         >
-                        {cat.date}
+                        {new Date(cat.date).toLocaleDateString()}
                     </Link>      
                           </td>
                         

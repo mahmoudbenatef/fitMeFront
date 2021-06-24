@@ -7,8 +7,11 @@ export const API = {
   getUsers: () => `${BASE_URL}/users/`,
   category: () => `${BASE_URL}/category/`,
   camp: () => `${BASE_URL}/camp/`,
+  meal: () => `${BASE_URL}/meals/`,
+  plan: () => `${BASE_URL}/plan/`,
   token: () => mySessionStorage.getToken(),
-  questioner:()=> `${BASE_URL}/questioner/`
+  questioner: () => `${BASE_URL}/questioner/`,
+  user: () => `${BASE_URL}/users/`,
 };
 
 export const BOOK_API = {
@@ -17,7 +20,7 @@ export const BOOK_API = {
   shelve: (bookId) => `${BASE_URL}/books/${bookId}/shelve`,
   popularBooks: () => `${BASE_URL}/popular/books`,
   books: () => `${BASE_URL}/books`,
-  search: (value,skip) => `${BASE_URL}/search/${value}/${skip}`
+  search: (value, skip) => `${BASE_URL}/search/${value}/${skip}`
 };
 
 export const CATEGORY_API = {
@@ -33,7 +36,7 @@ export const userBook = {
 export const AUTHOR_API = {
   popularAuthors: () => `${BASE_URL}/popular/authors`,
   getAllAuthors: () => `${BASE_URL}/authors`,
-  getBooks: (id,skip) => `${BASE_URL}/authors/${id}/books/${skip}`
+  getBooks: (id, skip) => `${BASE_URL}/authors/${id}/books/${skip}`
 };
 
 export const userCategoriesURL = {
@@ -45,5 +48,5 @@ export const userCategoryBooksURL = {
 };
 
 export const userBooksURL = {
-  getBooks: (userId) => `${BASE_URL}/user/${userId}/books`, 
+  getBooks: (userId) => `${BASE_URL}/user/${userId}/books`,
 };
