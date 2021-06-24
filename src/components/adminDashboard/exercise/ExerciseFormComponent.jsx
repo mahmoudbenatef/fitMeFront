@@ -105,7 +105,7 @@ export default function ExerciseFormComponent({ updated }) {
       );
 
       if (status === statusCode.Success) {
-        alert("Exercise Created Succeffuly ..");
+        alert("Exercise Updated Succeffuly ..");
       } else {
         alert("Something went wrong please try again later ..");
         console.log("something went wrong", data);
@@ -115,7 +115,7 @@ export default function ExerciseFormComponent({ updated }) {
     } else {
       const { status, data } = await exerciseServices.createExercise(exercise);
 
-      if (status === statusCode.Success) {
+      if (status === statusCode.Created) {
         alert("Exercise Updated Succeffuly ..");
       } else {
         alert("Something went wrong please try again later ..");

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import exerciseServices from "../../../API/exerciseServices";
+import statusCode from "../../../helper/statusCode";
 import LoadingComponent from "../../reusableComponents/LoadingComponent";
 export default function ListExerciseComponent() {
   let { path, url } = useRouteMatch();
@@ -17,6 +18,21 @@ export default function ListExerciseComponent() {
   useEffect(async () => {
     getAllExercises();
   }, []);
+
+  const handleDeleteExercise = async (exercsieId) => {
+    const { status, data } = await exerciseServices.deleteExercise(exercsieId);
+
+    // remove from the array
+    if (status === statusCode.Success) {
+      const updatedExercsies = allExercises.filter(
+        (exercsie) => exercsie._id !== exercsieId
+      );
+      alert("Deleted Successfully");
+      setAllExercises(updatedExercsies);
+    } else {
+      alert("Something went wronge please try again later");
+    }
+  };
   return (
     <>
       {loading ? (
@@ -64,6 +80,12 @@ export default function ListExerciseComponent() {
                       >
                         Edit
                       </Link>
+                      <button
+                        className="btn btn-danger btn-sm m-1"
+                        onClick={() => handleDeleteExercise(exercise._id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
