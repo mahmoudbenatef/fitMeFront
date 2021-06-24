@@ -40,7 +40,7 @@ function DayPlan() {
   }, []);
   return (
     <>
-      <h1 className="text-center text-body">meals</h1>
+      <h1 className="text-center text-body text-info">meals</h1>
       <div
         className="container "
         style={{
@@ -98,9 +98,9 @@ function DayPlan() {
 
             <Modal show={showBreakFast} onHide={handleCloseBreakFast} animation={false}>
               <Modal.Header closeButton>
-                <Modal.Title>{dietPlan?.breakfast.name}</Modal.Title>
+                <Modal.Title>{dietPlan?.breakfast?.name}</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{dietPlan?.breakfast.recipe}</Modal.Body>
+              <Modal.Body>{dietPlan?.breakfast?.recipe}</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseBreakFast}>
                   Close
@@ -155,9 +155,9 @@ function DayPlan() {
 
             <Modal show={showLaunch} onHide={handleCloseLaunch} animation={false}>
               <Modal.Header closeButton>
-                <Modal.Title>{dietPlan?.lunch.name}</Modal.Title>
+                <Modal.Title>{dietPlan?.lunch?.name}</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{dietPlan?.lunch.recipe}</Modal.Body>
+              <Modal.Body>{dietPlan?.lunch?.recipe}</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseLaunch}>
                   Close
@@ -213,9 +213,9 @@ function DayPlan() {
 
             <Modal show={showDinner} onHide={handelCloseDinner} animation={false}>
               <Modal.Header closeButton>
-                <Modal.Title>{dietPlan?.dinner.name}</Modal.Title>
+                <Modal.Title>{dietPlan?.dinner?.name}</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{dietPlan?.dinner.recipe}</Modal.Body>
+              <Modal.Body>{dietPlan?.dinner?.recipe}</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handelCloseDinner}>
                   Close

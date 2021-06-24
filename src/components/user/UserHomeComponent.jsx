@@ -3,6 +3,7 @@ import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import QuestionerComponent from "../userDashboard/QuestionerComponent"
 import AvailCampsComponent from "../userDashboard/AvailCampsComponent"
+import bg from "../../assets/bg-1.jpeg";
 import DayPlan from "../plan/DayPlan";
 export default function UserHomeComponent() {
   let { path} = useRouteMatch();
@@ -20,7 +21,19 @@ export default function UserHomeComponent() {
     }
   }, []);
   return (
-      <>
+      <
+        
+      >
+      <div
+      className={
+          "d-flex flex-column min-vh-100 justify-content-start"
+      }
+      style={{
+          backgroundImage: `url(${bg})`, backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+          margin: "0"
+      }}>
         <Switch>
 
           <Route key={1} path={`${path}/questioner`}>
@@ -40,7 +53,7 @@ export default function UserHomeComponent() {
             </Route>
 
         </Switch>
-
+        </div>
       </>
   );
 }
