@@ -16,8 +16,8 @@ export default {
   getAllExercises() {
     return axios.get(exerciseURL.exercise);
   },
-  updateExercise(exercise) {
-    return axios.patch(exerciseURL.exercise, exercise, {
+  updateExercise(exercise, exerciseId) {
+    return axios.patch(`${exerciseURL.exercise}/${exerciseId}`, exercise, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },

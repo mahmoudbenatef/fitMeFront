@@ -46,7 +46,7 @@ export default function ListExerciseComponent() {
             <tbody>
               {allExercises.map((exercise) => {
                 return (
-                  <tr>
+                  <tr key={exercise._id}>
                     <td>{exercise.name}</td>
                     <td>{exercise.description}</td>
                     <td>{exercise.duration}</td>
@@ -57,7 +57,10 @@ export default function ListExerciseComponent() {
                     <td>
                       <Link
                         className="btn btn-warning btn-sm"
-                        to={`${path}/edit`}
+                        to={{
+                          pathname: `${path}/edit`,
+                          state: exercise,
+                        }}
                       >
                         Edit
                       </Link>

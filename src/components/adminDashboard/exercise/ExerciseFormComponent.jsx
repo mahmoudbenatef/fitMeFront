@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
+import { useHistory, useLocation } from "react-router";
 import exerciseServices from "../../../API/exerciseServices";
 import statusCode from "../../../helper/statusCode";
 import "../../../styles/exercise.css";
@@ -28,11 +29,19 @@ export default function ExerciseFormComponent({ updated }) {
     }
   );
 
-  // if there is an updated objcet pass
+  // navigator
+  const history = useHistory();
 
-  if (updated) {
-    setExercise(updated);
-  }
+  // accessing the passed object
+  const location = useLocation();
+  const updateExercise = location?.state;
+
+  // if there is an updated objcet pass, set it to the form
+  useEffect(() => {
+    if (updateExercise) {
+      setExercise(updateExercise);
+    }
+  }, []);
 
   const [error, setError] = useState({});
   const isValidForm = () => {
@@ -73,7 +82,7 @@ export default function ExerciseFormComponent({ updated }) {
     // there is no any error message in the objcet, so the form is vaild
     return true;
   };
-  const handelAddExercise = async (e) => {
+  const handelSubmitExercise = async (e) => {
     // prevent refresh the page
     e.preventDefault();
     // if not valid form do not submit it and rais errors
@@ -88,17 +97,38 @@ export default function ExerciseFormComponent({ updated }) {
         .split(",");
     }
 
-    const { status, data } = await exerciseServices.createExercise(exercise);
-    if (status === statusCode.Created) {
-      alert("Exercise Created ..");
+    // handle updated and create
+    if (updateExercise) {
+      const { status, data } = await exerciseServices.updateExercise(
+        exercise,
+        exercise._id
+      );
+
+      if (status === statusCode.Success) {
+        alert("Exercise Created Succeffuly ..");
+      } else {
+        alert("Something went wrong please try again later ..");
+        console.log("something went wrong", data);
+      }
+
+      // create new one
     } else {
-      console.log("something went wrong", data);
+      const { status, data } = await exerciseServices.createExercise(exercise);
+
+      if (status === statusCode.Success) {
+        alert("Exercise Updated Succeffuly ..");
+      } else {
+        alert("Something went wrong please try again later ..");
+        console.log("something went wrong", data);
+      }
     }
+    // navigate to exercise page after create or update exercise
+    history.push("/admin/exercsie");
   };
   return (
     <div id="exerciseContainer">
       <div className="container mt-2">
-        <form onSubmit={handelAddExercise}>
+        <form onSubmit={handelSubmitExercise}>
           <div class="mb-3">
             <label for="name" class="form-label">
               Exercise Name:

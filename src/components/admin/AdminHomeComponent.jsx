@@ -38,7 +38,7 @@ export default function AdminHomeComponent() {
           </CategoryProvider>
         </Route>
 
-        <Route key={2} path={`${path}/exercise`}>
+        <Route key={2} path={`${path}/exercsie`}>
           <ExerciseComponent />
         </Route>
 

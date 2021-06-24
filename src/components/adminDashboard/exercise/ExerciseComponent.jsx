@@ -12,6 +12,9 @@ export default function ExerciseComponent() {
         <Route key={1} path={`${path}/create`}>
           <ExerciseFormComponent />
         </Route>
+        <Route key={1} path={`${path}/edit`}>
+          <ExerciseFormComponent />
+        </Route>
         <Route key={2} exact path={`${path}`}>
           <ListExerciseComponent />
         </Route>
