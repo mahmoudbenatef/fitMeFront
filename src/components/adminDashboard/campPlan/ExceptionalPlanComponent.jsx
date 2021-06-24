@@ -1,7 +1,37 @@
+import { useEffect, useState } from "react"
+import {ApiServices} from "../../../API/ApiServices";
+import { Link, useParams } from "react-router-dom";
+
 export default function ExceptionalPlanComponent(){
+    let { id } = useParams();
+    let {date} = useParams();
+    
+    const[ exceptionalUsers, setExceptionalUsers]= useState([]);
+    useEffect(()=>{
+        ApiServices.getExceptionalUsers().then((data)=>{
+            setExceptionalUsers(data.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    },[])
     return(
         <>
-        <h1>Hello Exceptional</h1>
+        <div className="container">
+
+        <h1> Exceptional Users In This Camp</h1>
+        {
+            exceptionalUsers.length >0 &&
+            exceptionalUsers.map(user=>  (
+                <Link
+                    className="nav-link"
+                    to={`/admin/camp/${id}/plan/${date}/exceptional/${user._id}`}
+                >
+                    {user.firstname + " " + user.lastname}
+                </Link>)
+                 )
+        }
+        </div>
         </>
     )
 }

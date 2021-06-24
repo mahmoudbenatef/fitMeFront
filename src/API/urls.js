@@ -10,7 +10,8 @@ export const API = {
   meal: () => `${BASE_URL}/meals/`,
   plan: () => `${BASE_URL}/plan/`,
   token: () => mySessionStorage.getToken(),
-  questioner: () => `${BASE_URL}/questioner/`
+  questioner: () => `${BASE_URL}/questioner/`,
+  user: () => `${BASE_URL}/users/`,
 };
 
 export const BOOK_API = {

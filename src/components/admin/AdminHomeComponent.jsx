@@ -10,7 +10,8 @@ import MealListComponet from "../../components/meal/MealListComponet";
 import PlanComponent from "../adminDashboard/campPlan/PlanComponent"
 import DayPlanComponent from "../adminDashboard/campPlan/DayPlanComponent"
 import ExceptionalPlanComponent from "../adminDashboard/campPlan/ExceptionalPlanComponent"
-import RegularPlanComponent from "../adminDashboard/campPlan/RegularPlanComponent"
+import RegularPlanComponent from "../adminDashboard/campPlan/RegularPlanComponent";
+import ExceptionalUserPlan from "../adminDashboard/campPlan/ExceptionalUserPlan";
 export default function AdminHomeComponent() {
   let { path, url } = useRouteMatch();
   const authentication = useContext(authContext);
@@ -62,13 +63,18 @@ export default function AdminHomeComponent() {
         </Route> 
 
 
-        <Route exact key={4} path={`${path}/camp/:id/plan/:date/regular`}>
+        <Route exact key={5} path={`${path}/camp/:id/plan/:date/regular`}>
           <RegularPlanComponent/>
         </Route> 
 
 
-        <Route exact key={4} path={`${path}/camp/:id/plan/:date/exceptional`}>
+        <Route exact key={6} path={`${path}/camp/:id/plan/:date/exceptional`}>
         <ExceptionalPlanComponent/>
+        </Route> 
+
+        <Route exact key={8} path={`${path}/camp/:id/plan/:date/exceptional/:userID`}>
+        <ExceptionalUserPlan/>
+
         </Route> 
         {/*  */}
       </Switch>

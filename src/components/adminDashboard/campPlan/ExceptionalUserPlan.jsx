@@ -1,7 +1,5 @@
+import { useParams } from "react-router-dom";
 import { useEffect , useState, useReducer } from "react";
-import {
-    useParams
-} from "react-router-dom";
 import {ApiServices} from "../../../API/ApiServices";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -20,11 +18,14 @@ const useStyles = makeStyles((theme) => ({
       minWidth: 400,
     },
   }));
-export default function RegularPlanComponent(){
+
+export default function ExceptionalUserPlan() {
     const [update, setUpdate]= useState({update:false,_id:null});
     const history = useHistory();
     let { id } = useParams();
     let {date} = useParams();
+    let {userID} = useParams();
+
     const classes = useStyles();
     const [breakfastList, setBreakfastList]=useState([]);
     const [lunchList, setLunchList]=useState([]);
@@ -59,17 +60,6 @@ export default function RegularPlanComponent(){
         obj[name]=true;
         setDropDowns(obj)
     };
-
-    useEffect(()=>{
-        ApiServices.getRegularPlan(id,date).then((data)=>{
-            if(data){
-               setUpdate({update:true,_id:data.data._d})  
-                setCamp(data.data)
-            }
-        }).catch((err)=>{})
-
-    },[])
-
     useEffect(()=>{
         ApiServices.getBreakfast().then((data)=>{
             setBreakfastList(data.data)
@@ -90,21 +80,7 @@ export default function RegularPlanComponent(){
 
     },[])
     
-    function sumbitRegularPlan(){
-        ApiServices.regularPlan(camp).then((data)=>{
-            history.push("/admin/camps");
-        }).catch((err)=>{
-            console.log(err);
-        })
-    }
-    function updateRegularPlan(){
-        ApiServices.updateRegularPlan(id, date,camp).then((data)=>{
-            history.push("/admin/camps");
-        }).catch((err)=>{
-            console.log(err);
-        })
-    }
-    return(
+    return (
         <>
         <div className={"container"}>
             <h2>{new Date(date).toLocaleDateString() + ' Plan for regular users'}</h2>
@@ -176,10 +152,10 @@ export default function RegularPlanComponent(){
       </FormControl>
     </div>
     {
-        update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={updateRegularPlan}>Update</button>
+        update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={()=>{}}>Update</button>
     }
     {
-        !update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={sumbitRegularPlan}>Save</button>
+        !update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={()=>{}}>Save</button>
     }
         </div>
         </>

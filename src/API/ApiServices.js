@@ -187,4 +187,28 @@ export const ApiServices = {
       },
     });
   },
+
+  getRegularPlan(camp, date) {
+    return axios.get(API.plan() + `regular/${camp}/${date}`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
+  updateRegularPlan(camp, date, plan) {
+    return axios.put(API.plan() + `regular/${camp}/${date}`, plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+
+  },
+
+  getExceptionalUsers(camp, date) {
+    return axios.get(API.user() + `exceptional`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
 };
