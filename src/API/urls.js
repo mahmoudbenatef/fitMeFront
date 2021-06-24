@@ -20,7 +20,7 @@ export const BOOK_API = {
   shelve: (bookId) => `${BASE_URL}/books/${bookId}/shelve`,
   popularBooks: () => `${BASE_URL}/popular/books`,
   books: () => `${BASE_URL}/books`,
-  search: (value, skip) => `${BASE_URL}/search/${value}/${skip}`
+  search: (value, skip) => `${BASE_URL}/search/${value}/${skip}`,
 };
 
 export const CATEGORY_API = {
@@ -36,7 +36,7 @@ export const userBook = {
 export const AUTHOR_API = {
   popularAuthors: () => `${BASE_URL}/popular/authors`,
   getAllAuthors: () => `${BASE_URL}/authors`,
-  getBooks: (id, skip) => `${BASE_URL}/authors/${id}/books/${skip}`
+  getBooks: (id, skip) => `${BASE_URL}/authors/${id}/books/${skip}`,
 };
 
 export const userCategoriesURL = {
@@ -44,9 +44,14 @@ export const userCategoriesURL = {
 };
 
 export const userCategoryBooksURL = {
-  getCategoryBooks: (categoryId) => `${BASE_URL}/users/categories/${categoryId}`,
+  getCategoryBooks: (categoryId) =>
+    `${BASE_URL}/users/categories/${categoryId}`,
 };
 
 export const userBooksURL = {
   getBooks: (userId) => `${BASE_URL}/user/${userId}/books`,
+};
+
+export const exerciseURL = {
+  exercise: `${BASE_URL}/exercsie`,
 };

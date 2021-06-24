@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import { mySessionStorage } from "../../helper/LocalStorge";
+
 import  "../../styles/Nav.css"
 import { BASE_URL } from "../../API/urls";
 export default function NavbarComponent() {
@@ -18,6 +19,7 @@ export default function NavbarComponent() {
   };
   return (
     <>
+
       <nav className="navbar navbar-expand-lg navbar-light justify-content-between " 
       // style={{backgroundColor:"#212529", color:"white"}}
       >
@@ -116,7 +118,6 @@ export default function NavbarComponent() {
          </ul>
         </div>
       </nav>
-
     </>
   );
 }
