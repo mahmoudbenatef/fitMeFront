@@ -96,135 +96,139 @@ export default function ExerciseFormComponent({ updated }) {
     }
   };
   return (
-    <div className="container">
-      <form onSubmit={handelAddExercise}>
-        <div class="mb-3">
-          <label for="name" class="form-label">
-            Exercise Name:
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            value={exercise.name}
-            minLength={3}
-            onChange={(e) => setExercise({ name: e.target.value })}
-          />
-          {error.name ? <ErrorComponent>{error.name}</ErrorComponent> : ""}
-        </div>
+    <div id="exerciseContainer">
+      <div className="container mt-2">
+        <form onSubmit={handelAddExercise}>
+          <div class="mb-3">
+            <label for="name" class="form-label">
+              Exercise Name:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              value={exercise.name}
+              minLength={3}
+              onChange={(e) => setExercise({ name: e.target.value })}
+            />
+            {error.name ? <ErrorComponent>{error.name}</ErrorComponent> : ""}
+          </div>
 
-        <div class="mb-3">
-          <label for="description" class="form-label">
-            Exercise Description
-          </label>
-          <textarea
-            class="form-control"
-            id="description"
-            value={exercise.description}
-            rows="3"
-            minLength={10}
-            onChange={(e) => setExercise({ description: e.target.value })}
-          ></textarea>
-          {error.description ? (
-            <ErrorComponent>{error.description}</ErrorComponent>
-          ) : (
-            ""
-          )}
-        </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">
+              Exercise Description
+            </label>
+            <textarea
+              class="form-control"
+              id="description"
+              value={exercise.description}
+              rows="3"
+              minLength={10}
+              onChange={(e) => setExercise({ description: e.target.value })}
+            ></textarea>
+            {error.description ? (
+              <ErrorComponent>{error.description}</ErrorComponent>
+            ) : (
+              ""
+            )}
+          </div>
 
-        <div class="mb-3">
-          <label for="duration" class="form-label">
-            Duration:
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="duration"
-            value={exercise.duration}
-            minLength={2}
-            onChange={(e) => setExercise({ duration: e.target.value })}
-          />
-          {error.duration ? (
-            <ErrorComponent>{error.duration}</ErrorComponent>
-          ) : (
-            ""
-          )}
-        </div>
+          <div class="mb-3">
+            <label for="duration" class="form-label">
+              Duration:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="duration"
+              value={exercise.duration}
+              minLength={2}
+              onChange={(e) => setExercise({ duration: e.target.value })}
+            />
+            {error.duration ? (
+              <ErrorComponent>{error.duration}</ErrorComponent>
+            ) : (
+              ""
+            )}
+          </div>
 
-        <div class="mb-3">
-          <label for="duration" class="form-label">
-            activityType:
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="duration"
-            value={exercise.activityType}
-            minLength={2}
-            onChange={(e) => setExercise({ activityType: e.target.value })}
-          />
-          {error.activityType ? (
-            <ErrorComponent>{error.activityType}</ErrorComponent>
-          ) : (
-            ""
-          )}
-        </div>
+          <div class="mb-3">
+            <label for="duration" class="form-label">
+              activityType:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="duration"
+              value={exercise.activityType}
+              minLength={2}
+              onChange={(e) => setExercise({ activityType: e.target.value })}
+            />
+            {error.activityType ? (
+              <ErrorComponent>{error.activityType}</ErrorComponent>
+            ) : (
+              ""
+            )}
+          </div>
 
-        <div class="mb-3">
-          <label for="avgMale" class="form-label">
-            Average Calories For Male:
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="avgMale"
-            minLength={3}
-            value={exercise.avgCaloriesMale}
-            onChange={(e) => setExercise({ avgCaloriesMale: e.target.value })}
-          />
-          {error.avgCaloriesMale ? (
-            <ErrorComponent>{error.avgCaloriesMale}</ErrorComponent>
-          ) : (
-            ""
-          )}
-        </div>
+          <div class="mb-3">
+            <label for="avgMale" class="form-label">
+              Average Calories For Male:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="avgMale"
+              minLength={3}
+              value={exercise.avgCaloriesMale}
+              onChange={(e) => setExercise({ avgCaloriesMale: e.target.value })}
+            />
+            {error.avgCaloriesMale ? (
+              <ErrorComponent>{error.avgCaloriesMale}</ErrorComponent>
+            ) : (
+              ""
+            )}
+          </div>
 
-        <div class="mb-3">
-          <label for="avgFemaale" class="form-label">
-            Average Calories For Female:
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="avgFemaale"
-            value={exercise.avgCaloriesFemale}
-            minLength={3}
-            onChange={(e) => setExercise({ avgCaloriesFemale: e.target.value })}
-          />
-          {error.avgCaloriesFemale ? (
-            <ErrorComponent>{error.avgCaloriesFemale}</ErrorComponent>
-          ) : (
-            ""
-          )}
-        </div>
+          <div class="mb-3">
+            <label for="avgFemaale" class="form-label">
+              Average Calories For Female:
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="avgFemaale"
+              value={exercise.avgCaloriesFemale}
+              minLength={3}
+              onChange={(e) =>
+                setExercise({ avgCaloriesFemale: e.target.value })
+              }
+            />
+            {error.avgCaloriesFemale ? (
+              <ErrorComponent>{error.avgCaloriesFemale}</ErrorComponent>
+            ) : (
+              ""
+            )}
+          </div>
 
-        <div class="mb-3">
-          <label for="notAllowedTo" class="form-label">
-            Not Allowed To:{" "}
-            <span style={{ fontSize: "x-large" }}>"sperated by ,"</span>
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="notAllowedTo"
-            value={exercise.notAllowedTo}
-            onChange={(e) => setExercise({ notAllowedTo: e.target.value })}
-          />
-        </div>
-        <div class="mb-3">
-          <button className="btn btn-success btn-sm">Submit</button>
-        </div>
-      </form>
+          <div class="mb-3">
+            <label for="notAllowedTo" class="form-label">
+              Not Allowed To:{" "}
+              <span style={{ fontSize: "x-large" }}>"sperated by ,"</span>
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="notAllowedTo"
+              value={exercise.notAllowedTo}
+              onChange={(e) => setExercise({ notAllowedTo: e.target.value })}
+            />
+          </div>
+          <div class="mb-3">
+            <button className="btn btn-success btn-sm">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

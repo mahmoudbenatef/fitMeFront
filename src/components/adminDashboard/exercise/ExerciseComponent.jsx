@@ -1,10 +1,21 @@
 import React from "react";
-import "../../../styles/exercise.css";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import ExerciseFormComponent from "./ExerciseFormComponent";
+import ListExerciseComponent from "./ListExerciseComponent";
+
 export default function ExerciseComponent() {
+  let { path, url } = useRouteMatch();
+
   return (
-    <div id="exerciseContainer">
-      <ExerciseFormComponent />
+    <div>
+      <Switch>
+        <Route key={1} path={`${path}/create`}>
+          <ExerciseFormComponent />
+        </Route>
+        <Route key={2} exact path={`${path}`}>
+          <ListExerciseComponent />
+        </Route>
+      </Switch>
     </div>
   );
 }
