@@ -103,7 +103,7 @@ export default function ExceptionalUserPlan() {
         ApiServices.updateExceptionalPlan(id, date,camp, userID).then((data)=>{
             history.push("/admin/camps");
         }).catch((err)=>{
-            console.log(err);
+                history.push("/admin/camps");
         })
     }
     
