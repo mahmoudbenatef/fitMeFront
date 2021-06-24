@@ -117,7 +117,7 @@ function DayPlan() {
               src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy_porridge_bowl-d434804.jpg"
               onClick={handleShowLaunch}
             />
-            <Card.Title className="text-primary text-center">launch</Card.Title>
+            <Card.Title className="text-primary text-center">lunch</Card.Title>
             <br />
             <div
               className="btn-group"
@@ -127,7 +127,7 @@ function DayPlan() {
               <input
                 type="radio"
                 className="btn-check"
-                name="launch"
+                name="lunch"
                 onChange={() => {
                   
                 }}
@@ -137,16 +137,16 @@ function DayPlan() {
                     `${BASE_URL}plan/${
                       mySessionStorage.getCurrentUser()._id
                     }/${getCurrentDate()}`,{
-                      launchCheck:true
+                      lunchCheck:true
                     }
                   );
-                  setDietPlan({...dietPlan,launchCheck:true});
+                  setDietPlan({...dietPlan,lunchCheck:true});
 
                 }}
                 id="launch"
                 autoComplete="off"
-                checked={dietPlan?.launchCheck||false}
-                disabled={dietPlan?.launchCheck}
+                checked={dietPlan?.lunchCheck||false}
+                disabled={dietPlan?.lunchCheck}
               />
               <label className="btn btn-outline-primary" htmlFor="launch">
                 Yes
@@ -155,9 +155,9 @@ function DayPlan() {
 
             <Modal show={showLaunch} onHide={handleCloseLaunch} animation={false}>
               <Modal.Header closeButton>
-                <Modal.Title>{dietPlan?.launch.name}</Modal.Title>
+                <Modal.Title>{dietPlan?.lunch.name}</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{dietPlan?.launch.recipe}</Modal.Body>
+              <Modal.Body>{dietPlan?.lunch.recipe}</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseLaunch}>
                   Close
