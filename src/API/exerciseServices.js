@@ -13,8 +13,8 @@ export default {
       return error.response;
     }
   },
-  getAllExercises() {
-    return axios.get(exerciseURL.exercise);
+  getAllExercises(params) {
+    return axios.get(`${exerciseURL.exercise}`, { params });
   },
   updateExercise(exercise, exerciseId) {
     return axios.patch(`${exerciseURL.exercise}/${exerciseId}`, exercise, {

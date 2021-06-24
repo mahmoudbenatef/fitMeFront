@@ -43,7 +43,7 @@ export default function NavbarComponent() {
           )}
         </div>
         <div className={" "}>
-          <button className="nav-link" onClick={logout}>
+          <button className="nav-link text-primary" onClick={logout}>
             {" "}
             Logout
           </button>
