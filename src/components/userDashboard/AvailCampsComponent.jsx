@@ -27,16 +27,16 @@ export default function AvailCampsComponent (){
     }
     return (
         <>
-            <div className="row justify-content-center mt-4 " >
+            <div className="row justify-content-center mt-4  "  >
                 <div className="col-md-8 " style={{color:"white"}}>
-                    <Table striped bordered hover variant="dark">
+                    <Table striped bordered hover variant="dark" style={{textAlign:"center"}}>
                         <caption>List of camps</caption>
                         <thead key={-1}>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Camp</th>
-                            <th colSpan={2} scope="col">
-                                Actions
+                            <th  scope="col">
+                                Register on camps
                             </th>
                         </tr>
                         </thead>
@@ -47,7 +47,7 @@ export default function AvailCampsComponent (){
                                 return ( <tr>
                                             <td>{index+1}</td>
                                             <td>{new Date(camp.date).toLocaleDateString()}</td>
-                                            <td> <button className={"btn btn-primary"}  disabled={camp.users.indexOf(mySessionStorage.getCurrentUser()._id) != -1} onClick={()=>{
+                                            <td> <button className={"btn btn-light"}  disabled={camp.users.indexOf(mySessionStorage.getCurrentUser()._id) != -1} onClick={()=>{
                                                 registerOnCamp(camp._id)
                                             }}>
                                                 {

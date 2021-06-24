@@ -40,7 +40,7 @@ function DayPlan() {
   }, []);
   return (
     <>
-      <h1 className="text-center text-body text-info">meals</h1>
+      <h1 className="text-center  " style={{color:"white"}}>meals</h1>
       <div
         className="container "
         style={{

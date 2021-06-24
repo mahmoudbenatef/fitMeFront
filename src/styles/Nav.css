@@ -1,0 +1,13 @@
+.navbar-light .navbar-nav .nav-link{
+    text-decoration: none;
+    color: white;
+
+}
+.navbar-light .navbar-nav .nav-link:hover{
+    text-decoration: none;
+    color: #868a8f;
+}
+nav{
+    background-color:#212529;
+    color:white
+}
