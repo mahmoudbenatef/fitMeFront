@@ -8,7 +8,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
+import { useHistory} from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
     button: {
       display: 'block',
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 export default function RegularPlanComponent(){
+    const history = useHistory();
     let { id } = useParams();
     let {date} = useParams();
     const classes = useStyles();
@@ -28,6 +30,8 @@ export default function RegularPlanComponent(){
     const [dinnerList, setDinnerList]=useState([]);
 
     const [camp, setCamp] = useReducer( (oldstate,updates)=>({...oldstate,...updates}),{
+        date:date,
+        camp:id,
         breakfast:'',
         lunch:'',
         dinner:'',
@@ -72,6 +76,14 @@ export default function RegularPlanComponent(){
         }).catch((err)=>{})
 
     },[])
+    function sumbitRegularPlan(){
+        ApiServices.regularPlan(camp).then((data)=>{
+            history.push("/admin/camps");
+
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
     return(
         <>
         <div className={"container"}>
@@ -147,7 +159,7 @@ export default function RegularPlanComponent(){
         </Select>
       </FormControl>
     </div>
-    <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={()=>{}}>Save</button>
+    <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={sumbitRegularPlan}>Save</button>
         </div>
         </>
     )

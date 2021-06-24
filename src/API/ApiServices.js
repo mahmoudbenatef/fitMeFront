@@ -178,5 +178,13 @@ export const ApiServices = {
       }
     );
   },
+  regularPlan(plan) {
+    return axios.post(API.plan() + 'regular', plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+        headers: { "Content-type": "application/json; charset=UTF-8" },
 
+      },
+    });
+  },
 };

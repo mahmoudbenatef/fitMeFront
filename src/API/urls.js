@@ -8,6 +8,7 @@ export const API = {
   category: () => `${BASE_URL}/category/`,
   camp: () => `${BASE_URL}/camp/`,
   meal: () => `${BASE_URL}/meals/`,
+  plan: () => `${BASE_URL}/plan/`,
   token: () => mySessionStorage.getToken(),
   questioner: () => `${BASE_URL}/questioner/`
 };
