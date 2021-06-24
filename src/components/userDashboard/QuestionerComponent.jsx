@@ -66,8 +66,8 @@ export default function QuesionerComponent() {
     }, [])
     return (
         <>
-            <div className="container">
-                <h1>Please help us to fill this questioner</h1>
+            <div className="container" style={{color:"white"}}>
+                <h1 >Please help us to fill this questioner</h1>
                 <div className="form-group mt-5">
                     <label>Are you a smoker ?</label>
                     <br/>

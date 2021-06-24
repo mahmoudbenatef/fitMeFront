@@ -1,6 +1,8 @@
 import {useContext, useEffect, useState, useReducer} from "react";
 import {ApiServices} from "../../API/ApiServices";
 import {mySessionStorage} from "../../helper/LocalStorge";
+import { Table, Button } from "react-bootstrap";
+
 
 export default function AvailCampsComponent (){
     const[camps,setCamps]=useState([])
@@ -25,9 +27,9 @@ export default function AvailCampsComponent (){
     }
     return (
         <>
-            <div className="row justify-content-center mt-4 ">
-                <div className="col-md-8 ">
-                    <table className="table">
+            <div className="row justify-content-center mt-4 " >
+                <div className="col-md-8 " style={{color:"white"}}>
+                    <Table striped bordered hover variant="dark">
                         <caption>List of camps</caption>
                         <thead key={-1}>
                         <tr>
@@ -44,7 +46,7 @@ export default function AvailCampsComponent (){
                             camps.map((camp,index)=>{
                                 return ( <tr>
                                             <td>{index+1}</td>
-                                            <td>{camp.date}</td>
+                                            <td>{new Date(camp.date).toLocaleDateString()}</td>
                                             <td> <button className={"btn btn-primary"}  disabled={camp.users.indexOf(mySessionStorage.getCurrentUser()._id) != -1} onClick={()=>{
                                                 registerOnCamp(camp._id)
                                             }}>
@@ -61,7 +63,7 @@ export default function AvailCampsComponent (){
                             <tr><td colSpan={2}>No data</td></tr>
                         }
                         </tbody>
-                    </table>
+                    </Table>
                 </div>
             </div>
 
