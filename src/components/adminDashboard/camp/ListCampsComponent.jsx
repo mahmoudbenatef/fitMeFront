@@ -64,7 +64,7 @@ export default function ListCampsComponent ({ changeState }) {
                         className="nav-link"
                         to={ `/admin/camp/${cat._id}/plan` }
                         >
-                        {new Date(cat.date).toLocaleString()}
+                        {new Date(cat.date).toLocaleDateString()}
                     </Link>      
                           </td>
                         

@@ -34,7 +34,7 @@ export default function PlanComponent() {
                                 className="nav-link"
                                 to={`/admin/camp/${id}/plan/${someDate}`}
                             >
-                                {someDate.toLocaleString()}
+                                {someDate.toLocaleDateString()}
                             </Link>
                         )
                     })
