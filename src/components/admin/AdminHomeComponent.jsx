@@ -5,6 +5,7 @@ import MealListComponet from "../../components/meal/MealListComponet";
 import { authContext } from "../../contexts/authContext";
 import { CampProvider } from "../../contexts/campContext";
 import { CategoryProvider } from "../../contexts/categoryContext";
+import "../../styles/adminDashboard.css";
 import CampComponent from "../adminDashboard/camp/CampComponent.jsx";
 import DayPlanComponent from "../adminDashboard/campPlan/DayPlanComponent";
 import ExceptionalPlanComponent from "../adminDashboard/campPlan/ExceptionalPlanComponent";
@@ -30,7 +31,7 @@ export default function AdminHomeComponent() {
   }, []);
 
   return (
-    <>
+    <div id="container">
       <Switch>
         <Route key={2} path={`${path}/categories`}>
           <CategoryProvider>
@@ -77,6 +78,6 @@ export default function AdminHomeComponent() {
         </Route>
         {/*  */}
       </Switch>
-    </>
+    </div>
   );
 }
