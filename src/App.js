@@ -15,6 +15,10 @@ import NavbarComponent from "./components/user/NavbarComponent";
 import UserHomeComponent from "./components/user/UserHomeComponent";
 import bg from "../src/assets/fitnes3.jpeg"
 import { authContext } from "./contexts/authContext";
+import MealComponet from "./components/meal/MealComponet";
+import MealListComponet from "./components/meal/MealListComponet";
+import DayPlan from "./components/plan/DayPlan";
+
 function App(props) {
   const authentication = useContext(authContext);
   console.log(authentication);
