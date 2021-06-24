@@ -32,6 +32,7 @@ export default function ExceptionalUserPlan() {
     const [dinnerList, setDinnerList]=useState([]);
 
     const [camp, setCamp] = useReducer( (oldstate,updates)=>({...oldstate,...updates}),{
+        user:userID,
         date:date,
         camp:id,
         breakfast:'',
@@ -60,6 +61,16 @@ export default function ExceptionalUserPlan() {
         obj[name]=true;
         setDropDowns(obj)
     };
+
+    useEffect(()=>{
+        ApiServices.getExceptionalPlan(id,date,userID).then((data)=>{
+            if(data){
+               setUpdate({update:true,_id:data.data._d})  
+                setCamp(data.data)
+            }
+        }).catch((err)=>{})
+
+    },[])
     useEffect(()=>{
         ApiServices.getBreakfast().then((data)=>{
             setBreakfastList(data.data)
@@ -80,10 +91,26 @@ export default function ExceptionalUserPlan() {
 
     },[])
     
+    function sumbitExceptionalPlan(){
+        ApiServices.exceptionalPlan(camp).then((data)=>{
+            history.push("/admin/camps");
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+
+    function updateEceptionalPlan(){
+        ApiServices.updateExceptionalPlan(id, date,camp, userID).then((data)=>{
+            history.push("/admin/camps");
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+    
     return (
         <>
         <div className={"container"}>
-            <h2>{new Date(date).toLocaleDateString() + ' Plan for regular users'}</h2>
+            <h2>{new Date(date).toLocaleDateString() + ' Plan for exceptional user'}</h2>
         <div>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-controlled-open-select-label">Breakfat</InputLabel>
@@ -152,10 +179,10 @@ export default function ExceptionalUserPlan() {
       </FormControl>
     </div>
     {
-        update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={()=>{}}>Update</button>
+        update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={updateEceptionalPlan}>Update</button>
     }
     {
-        !update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={()=>{}}>Save</button>
+        !update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={sumbitExceptionalPlan}>Save</button>
     }
         </div>
         </>

@@ -187,7 +187,15 @@ export const ApiServices = {
       },
     });
   },
+  exceptionalPlan(plan) {
+    return axios.post(API.plan() + 'exceptional', plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+        headers: { "Content-type": "application/json; charset=UTF-8" },
 
+      },
+    });
+  },
   getRegularPlan(camp, date) {
     return axios.get(API.plan() + `regular/${camp}/${date}`, {
       headers: {
@@ -195,8 +203,23 @@ export const ApiServices = {
       },
     });
   },
+  getExceptionalPlan(camp, date, user) {
+    return axios.get(API.plan() + `exceptional/${camp}/${date}/${user}`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
   updateRegularPlan(camp, date, plan) {
     return axios.put(API.plan() + `regular/${camp}/${date}`, plan, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+
+  },
+  updateExceptionalPlan(camp, date, plan, user) {
+    return axios.put(API.plan() + `exceptional/${camp}/${date}/${user}`, plan, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
