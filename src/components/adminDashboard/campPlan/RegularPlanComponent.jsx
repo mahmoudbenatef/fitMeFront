@@ -120,8 +120,9 @@ export default function RegularPlanComponent(){
             <h2>{new Date(date).toLocaleDateString() + ' Plan for regular users'}</h2>
         <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Breakfat</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"    className="text-light">Breakfat</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.breakfast}
@@ -143,8 +144,9 @@ export default function RegularPlanComponent(){
     </div>
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Lunch</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"    className="text-light">Lunch</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.lunch}
@@ -165,8 +167,9 @@ export default function RegularPlanComponent(){
     </div>
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Dinner</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"    className="text-light">Dinner</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.dinner}
@@ -188,8 +191,9 @@ export default function RegularPlanComponent(){
     
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Exercise 1</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"    className="text-light">Exercise 1</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.exercise1}
@@ -211,8 +215,9 @@ export default function RegularPlanComponent(){
     
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Exercise 2</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"    className="text-light">Exercise 2</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.exercise2}
@@ -233,8 +238,9 @@ export default function RegularPlanComponent(){
     </div>
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Exercise 3</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label" className="text-light">Exercise 3</InputLabel>
         <Select
+         className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.exercise3}

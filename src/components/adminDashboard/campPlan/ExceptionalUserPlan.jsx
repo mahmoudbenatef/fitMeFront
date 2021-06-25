@@ -131,8 +131,9 @@ export default function ExceptionalUserPlan() {
             <h2>{new Date(date).toLocaleDateString() + ' Plan for exceptional user'}</h2>
         <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Breakfat</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"  className="text-light">Breakfat</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.breakfast}
@@ -154,8 +155,9 @@ export default function ExceptionalUserPlan() {
     </div>
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Lunch</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"  className="text-light">Lunch</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.lunch}
@@ -176,14 +178,16 @@ export default function ExceptionalUserPlan() {
     </div>
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Dinner</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"  className="text-light">Dinner</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.dinner}
           onClose={()=>handleClose('dinner')}
           onOpen={ ()=> handleOpen('dinner')}
           value={camp.dinner}
+         
           onChange={e=>  handleChange(e,'dinner')}
         >
           <MenuItem value="">
@@ -199,8 +203,9 @@ export default function ExceptionalUserPlan() {
 
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Exercise 1</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"  className="text-light">Exercise 1</InputLabel>
         <Select
+           className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.exercise1}
@@ -222,8 +227,9 @@ export default function ExceptionalUserPlan() {
     
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Exercise 2</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"  className="text-light" >Exercise 2</InputLabel>
         <Select
+         className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.exercise2}
@@ -244,8 +250,9 @@ export default function ExceptionalUserPlan() {
     </div>
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Exercise 3</InputLabel>
+        <InputLabel id="demo-controlled-open-select-label"  className="text-light">Exercise 3</InputLabel>
         <Select
+         className="text-light"
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
           open={dropDowns.exercise3}
