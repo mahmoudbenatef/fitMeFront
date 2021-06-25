@@ -3,6 +3,7 @@ import { ApiServices } from "../../../API/ApiServices";
 import { categoryContext } from "../../../contexts/categoryContext";
 import LoadingCompoenet from "../../reusableComponents/LoadingComponent";
 import PaginationComponent from "../../reusableComponents/PaginationComponent";
+import {Table} from "react-bootstrap"
 
 export default function ({ changeState }) {
   const [categories, setCategories] = useState([]);
@@ -38,8 +39,8 @@ export default function ({ changeState }) {
         <div>
           <div className="row justify-content-center mt-4 ">
             <div className="col-md-8 ">
-              <table className="table">
-                <caption>List of categories</caption>
+              <Table striped bordered hover variant="dark">
+                <caption style={{color:"white"}}>List of categories</caption>
                 <thead key={-1}>
                   <tr>
                     <th scope="col">#</th>
@@ -88,7 +89,7 @@ export default function ({ changeState }) {
                     </tr>
                   )}
                 </tbody>
-              </table>
+              </Table>
             </div>
           </div>
           <div className="row justify-content-center mt-4 ">

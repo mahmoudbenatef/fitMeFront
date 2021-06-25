@@ -79,7 +79,8 @@ function MealComponet() {
         console.log(currentMeal.data);
         setName(currentMeal.data.name);
         setRecipe(currentMeal.data.recipe);
-        setnotAllowedCat(currentMeal.data.notAllowedTo[0].category.name);
+        setMealType(currentMeal.data.mealType);
+        setnotAllowedCat(currentMeal.data.notAllowedTo[0]?.category.name);
       };
       fetchApi();
     }

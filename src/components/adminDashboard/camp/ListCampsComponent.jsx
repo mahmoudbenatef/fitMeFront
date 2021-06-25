@@ -4,6 +4,7 @@ import {campContext} from "../../../contexts/campContext";
 import LoadingCompoenet from "../../reusableComponents/LoadingComponent";
 import PaginationComponent from "../../reusableComponents/PaginationComponent";
 import { Link } from "react-router-dom";
+import {Table} from "react-bootstrap";
 
 export default function ListCampsComponent ({ changeState }) {
   const [camps, setCamps] = useState([]);
@@ -39,8 +40,8 @@ export default function ListCampsComponent ({ changeState }) {
         <div>
           <div className="row justify-content-center mt-4 ">
             <div className="col-md-8 ">
-              <table className="table">
-                <caption>List of camps</caption>
+            <Table striped bordered hover variant="dark">
+                <caption className="text-light">List of camps</caption>
                 <thead key={-1}>
                   <tr>
                     <th scope="col">#</th>
@@ -112,7 +113,7 @@ export default function ListCampsComponent ({ changeState }) {
                     </tr>
                   )}
                 </tbody>
-              </table>
+              </Table>
             </div>
           </div>
           <div className="row justify-content-center mt-4 ">
