@@ -212,8 +212,8 @@ export const ApiServices = {
     });
   },
 
-  getExceptionalUsers(camp, date) {
-    return axios.get(API.user() + `exceptional`, {
+  getExceptionalUsers(camp) {
+    return axios.get(API.user() + `exceptional/${camp}`, {
       headers: {
         Authorization: `JWT ${API.token()}`,
       },
