@@ -8,8 +8,9 @@ export default function ExceptionalPlanComponent(){
     
     const[ exceptionalUsers, setExceptionalUsers]= useState([]);
     useEffect(()=>{
-        ApiServices.getExceptionalUsers().then((data)=>{
-            setExceptionalUsers(data.data)
+        ApiServices.getExceptionalUsers(id).then((data)=>{
+            // alert(JSON.stringify(data.data))
+            setExceptionalUsers(data.data.users)
         })
         .catch(err=>{
             console.log(err);
