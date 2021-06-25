@@ -33,6 +33,7 @@ function MealComponet() {
   const [mealType, setMealType] = React.useState(mealTypes.breakfast.id);
   const [recipe, setRecipe] = useState("");
   const [name, setName] = useState("");
+  const [videoId,setvideoId]=useState("");
 
   const [notAllowedTo, setNotAllowedTo] = useState([]);
   const [notAllowedCat, setnotAllowedCat] = useState("");
@@ -54,6 +55,7 @@ function MealComponet() {
         name,
         recipe,
         mealType,
+        videoId,
         // notAllowedTo: [{ category: notAllowedCat }],
       });
       console.log(mealToSave);
@@ -62,6 +64,7 @@ function MealComponet() {
         name,
         recipe,
         mealType,
+        videoId,
         // notAllowedTo: [{ category: notAllowedCat }],
       });
     }
@@ -88,6 +91,7 @@ function MealComponet() {
         setRecipe(currentMeal.data.recipe);
         setMealType(currentMeal.data.mealType);
         setnotAllowedCat(currentMeal.data.notAllowedTo[0]?.category.name);
+        setvideoId(currentMeal.data.videoId);
       };
       fetchApi();
     }
@@ -135,6 +139,17 @@ function MealComponet() {
             </option>
           ))}
         </select> */}
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Video Id</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Video Id"
+            value={videoId}
+            onChange={(e) => {
+              setvideoId(e.target.value);
+            }}
+          />
+        </Form.Group>
       </Form>
       <Button variant="primary" type="submit" onClick={saveMeal}>
         Submit
