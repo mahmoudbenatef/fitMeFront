@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { mySessionStorage } from "../../helper/LocalStorge";
 import Divider from "@material-ui/core/Divider";
 const BASE_URL = "http://localhost:3001/";
+const video_URL = "https://www.youtube.com/embed/";
 function DayPlan() {
   const [dietPlan, setDietPlan] = useState();
   const [showBreakFast, setShowBreakFast] = useState(false);
@@ -30,7 +31,6 @@ function DayPlan() {
   const handelShowExercise1 = () => setShowExercise1(true);
   const handelShowExercise2 = () => setShowExercise2(true);
   const handelShowExercise3 = () => setShowExercise3(true);
-
 
   const getCurrentDate = () => {
     let currentDate = new Date();
@@ -69,13 +69,18 @@ function DayPlan() {
 
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 ">
-            <Card.Img
-              variant="top"
-              className="img-thumbnail"
-              src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy_porridge_bowl-d434804.jpg"
-              onClick={handleShowBreakFast}
+            <iframe
+              style={{ width: "16rem" }}
+              src={`${video_URL}${dietPlan?.breakfast?.videoId}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Embedded youtube"
             />
-            <Card.Title className="text-primary text-center">
+            <Card.Title
+              className="text-primary text-center"
+              onClick={handleShowBreakFast}
+            >
               breakfast
             </Card.Title>
             <br />
@@ -130,13 +135,21 @@ function DayPlan() {
         </Card>
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 align-items-center">
-            <Card.Img
-              variant="top"
-              className="img-thumbnail"
-              src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy_porridge_bowl-d434804.jpg"
-              onClick={handleShowLaunch}
+            <iframe
+              style={{ width: "16rem" }}
+              src={`${video_URL}${dietPlan?.lunch?.videoId}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Embedded youtube"
             />
-            <Card.Title className="text-primary text-center">lunch</Card.Title>
+
+            <Card.Title
+              className="text-primary text-center"
+              onClick={handleShowLaunch}
+            >
+              lunch
+            </Card.Title>
             <br />
             <div
               className="btn-group"
@@ -188,13 +201,21 @@ function DayPlan() {
         </Card>
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 align-items-center">
-            <Card.Img
-              variant="top"
-              className="img-thumbnail"
-              src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy_porridge_bowl-d434804.jpg"
-              onClick={handelShowDinner}
+            <iframe
+              style={{ width: "16rem" }}
+              src={`${video_URL}${dietPlan?.dinner?.videoId}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Embedded youtube"
             />
-            <Card.Title className="text-primary text-center">dinner</Card.Title>
+
+            <Card.Title
+              className="text-primary text-center"
+              onClick={handelShowDinner}
+            >
+              dinner
+            </Card.Title>
             <br />
             <div
               className="btn-group"
@@ -258,13 +279,15 @@ function DayPlan() {
 
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 ">
-            <Card.Img
-              variant="top"
-              className="img-thumbnail"
-              src="https://api.time.com/wp-content/uploads/2019/09/getting-back-to-exercise-routine.jpg"
-              onClick={handelShowExercise1}
+          <iframe
+              style={{ width: "16rem" }}
+              src={`${video_URL}${dietPlan?.exercise1?.videoId}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Embedded youtube"
             />
-            <Card.Title className="text-primary text-center">
+            <Card.Title className="text-primary text-center"  onClick={handelShowExercise1}>
               Exercise 1
             </Card.Title>
             <br />
@@ -319,13 +342,18 @@ function DayPlan() {
         </Card>
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 align-items-center">
-            <Card.Img
-              variant="top"
-              className="img-thumbnail"
-              src="https://api.time.com/wp-content/uploads/2019/09/getting-back-to-exercise-routine.jpg"
-              onClick={handelShowExercise2}
+          <iframe
+              style={{ width: "16rem" }}
+              src={`${video_URL}${dietPlan?.exercise2?.videoId}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Embedded youtube"
             />
-            <Card.Title className="text-primary text-center">exercise 2</Card.Title>
+          
+            <Card.Title className="text-primary text-center"   onClick={handelShowExercise2}>
+              exercise 2
+            </Card.Title>
             <br />
             <div
               className="btn-group"
@@ -377,13 +405,21 @@ function DayPlan() {
         </Card>
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 align-items-center">
-            <Card.Img
-              variant="top"
-              className="img-thumbnail"
-              src="https://api.time.com/wp-content/uploads/2019/09/getting-back-to-exercise-routine.jpg"
-              onClick={handelShowExercise3}
+          <iframe
+              style={{ width: "16rem" }}
+              src={`${video_URL}${dietPlan?.exercise3?.videoId}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Embedded youtube"
             />
-            <Card.Title className="text-primary text-center">exersise 3</Card.Title>
+
+            <Card.Title
+              className="text-primary text-center"
+              onClick={handelShowExercise3}
+            >
+              exersise 3
+            </Card.Title>
             <br />
             <div
               className="btn-group"
@@ -411,7 +447,10 @@ function DayPlan() {
                 checked={dietPlan?.exercise3Check || false}
                 disabled={dietPlan?.exercise3Check}
               />
-              <label className="btn btn-outline-primary" htmlFor="exersise3-btn">
+              <label
+                className="btn btn-outline-primary"
+                htmlFor="exersise3-btn"
+              >
                 Yes
               </label>
             </div>

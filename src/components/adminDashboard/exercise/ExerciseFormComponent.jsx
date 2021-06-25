@@ -26,6 +26,7 @@ export default function ExerciseFormComponent({ updated }) {
       avgCaloriesFemale: "",
       activityType: "",
       notAllowedTo: "",
+      videoId: "",
     }
   );
 
@@ -252,6 +253,19 @@ export default function ExerciseFormComponent({ updated }) {
               id="notAllowedTo"
               value={exercise.notAllowedTo}
               onChange={(e) => setExercise({ notAllowedTo: e.target.value })}
+            />
+          </div>
+          <div class="mb-3">
+            <label for="videoId" class="form-label">
+              Not Allowed To:{" "}
+              <span style={{ fontSize: "x-large" }}>"Video Id"</span>
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="notAllowedTo"
+              value={exercise.videoId}
+              onChange={(e) => setExercise({ videoId: e.target.value })}
             />
           </div>
           <div class="mb-3">
