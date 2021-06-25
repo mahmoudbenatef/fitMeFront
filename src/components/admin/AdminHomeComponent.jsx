@@ -51,7 +51,7 @@ export default function AdminHomeComponent() {
         <Route path={`${path}/meals`}>
           <MealComponet />
         </Route>
-        <Route exact path={`${path}/mealsList`}>
+        <Route  path={`${path}/mealsList`}>
           <MealListComponet />
         </Route>
         <Route key={3} exact path={`${path}/camp/:id/plan`}>

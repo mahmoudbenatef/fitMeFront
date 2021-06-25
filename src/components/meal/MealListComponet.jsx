@@ -56,7 +56,7 @@ function MealListComponet() {
               <td>
                 <Button
                   onClick={() => {
-                    history.push("/meals?id=" + currentMeal._id);
+                    history.push("/admin/meals?id=" + currentMeal._id);
                   }}
                 >
                   update
