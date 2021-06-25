@@ -6,6 +6,7 @@ import exerciseServices from "../../../API/exerciseServices";
 import statusCode from "../../../helper/statusCode";
 import { default as LoadingComponent } from "../../reusableComponents/LoadingComponent";
 import PaginationComponent from "../../reusableComponents/PaginationComponent";
+import {Table} from "react-bootstrap";
 export default function ListExerciseComponent() {
   let { path, url } = useRouteMatch();
   const [allExercises, setAllExercises] = useState([]);
@@ -52,7 +53,7 @@ export default function ListExerciseComponent() {
           >
             Create New Exercise
           </Link>
-          <table className="table ">
+          <Table striped bordered hover variant="dark">
             <caption className="mt-2 text-center">List of Exercises</caption>
             <thead key={-1}>
               <tr>
@@ -106,7 +107,7 @@ export default function ListExerciseComponent() {
                 </tr>
               )}
             </tbody>
-          </table>
+          </Table>
           <div className="d-flex justify-content-center">
             <PaginationComponent
               count={allExercises.count}

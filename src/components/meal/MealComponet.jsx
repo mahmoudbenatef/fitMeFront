@@ -4,6 +4,11 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 const BASE_URL = "http://localhost:3001/";
 const mealTypes = {
   breakfast: {
@@ -23,10 +28,12 @@ const mealTypes = {
     name: "lunch",
   },
 };
+
 function MealComponet() {
   const [mealType, setMealType] = React.useState(mealTypes.breakfast.id);
   const [recipe, setRecipe] = useState("");
   const [name, setName] = useState("");
+
   const [notAllowedTo, setNotAllowedTo] = useState([]);
   const [notAllowedCat, setnotAllowedCat] = useState("");
   let history = useHistory();
@@ -50,14 +57,14 @@ function MealComponet() {
         // notAllowedTo: [{ category: notAllowedCat }],
       });
       console.log(mealToSave);
-    }else{
-    let mealToSave = await axios.post(`${BASE_URL}meals`, {
-      name,
-      recipe,
-      mealType,
-      // notAllowedTo: [{ category: notAllowedCat }],
-    });
-  }
+    } else {
+      let mealToSave = await axios.post(`${BASE_URL}meals`, {
+        name,
+        recipe,
+        mealType,
+        // notAllowedTo: [{ category: notAllowedCat }],
+      });
+    }
     history.push(`/admin/mealsList`);
   };
   useEffect(() => {
@@ -87,7 +94,7 @@ function MealComponet() {
   }, []);
   return (
     <div>
-      <Form>
+      <Form className="mt-5 ml-3">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -111,27 +118,27 @@ function MealComponet() {
             rows={3}
           />
         </Form.Group>
-        <InputLabel htmlFor="demo-simple-select-label">Meal Type</InputLabel>
-        <select value={mealType} onChange={handelMealChange}>
-          {Object.keys(mealTypes).map((key) => (
-            <option key={key} value={key}>
-              {mealTypes[key].name}
-            </option>
-          ))}
-        </select>
-
-        <select value={notAllowedCat} onChange={handelNotAllowedCatChange}>
+        <FormControl>
+          <InputLabel htmlFor="demo-simple-select-label" className="text-light mt-2">
+            Meal Type
+          </InputLabel>
+          <Select value={mealType} variant="filled" onChange={handelMealChange} className="text-light mb-3 ">
+            {Object.keys(mealTypes).map((key) => (
+              <MenuItem value={key}> {mealTypes[key].name}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        {/* <select value={notAllowedCat} onChange={handelNotAllowedCatChange}>
           {notAllowedTo.map((cat) => (
             <option key={cat._id} value={cat._id}>
               {cat.label}
             </option>
           ))}
-        </select>
-
-        <Button variant="primary" type="submit" onClick={saveMeal}>
-          Submit
-        </Button>
+        </select> */}
       </Form>
+      <Button variant="primary" type="submit" onClick={saveMeal}>
+        Submit
+      </Button>
     </div>
   );
 }

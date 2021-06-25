@@ -21,7 +21,15 @@ function MealListComponet() {
   }, [render]);
   return (
     <div>
-      <Table striped bordered hover>
+       <Button
+       className="btn btn-success m-3 p-1 float-end"
+        onClick={() => {
+          history.push("/admin/meals");
+        }}
+      >
+        Add new meal
+      </Button>
+      <Table striped bordered hover variant="dark" className="mt-5 ">
         <thead>
           <tr>
             <th>#</th>
@@ -43,6 +51,7 @@ function MealListComponet() {
               <td>{currentMeal.notAllowedTo[0]?.category.name}</td>
               <td>
                 <button
+                className="btn btn-danger"
                   onClick={async () => {
                     await axios.delete(
                       "http://localhost:3001/meals/" + currentMeal._id
@@ -66,13 +75,7 @@ function MealListComponet() {
           ))}
         </tbody>
       </Table>
-      <Button
-        onClick={() => {
-          history.push("/admin/meals");
-        }}
-      >
-        add meal
-      </Button>
+     
     </div>
   );
 }
