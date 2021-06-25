@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { useHistory} from "react-router-dom";
+import exerciseServices from "../../../API/exerciseServices";
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -28,6 +29,7 @@ export default function ExceptionalUserPlan() {
 
     const classes = useStyles();
     const [breakfastList, setBreakfastList]=useState([]);
+    const [exerciseList, setExerciseList]=useState([]);
     const [lunchList, setLunchList]=useState([]);
     const [dinnerList, setDinnerList]=useState([]);
 
@@ -38,11 +40,19 @@ export default function ExceptionalUserPlan() {
         breakfast:'',
         lunch:'',
         dinner:'',
+        exercise1:'',
+        exercise2:'',
+        exercise3:''
     });
     const [dropDowns, setDropDowns] = useReducer( (oldstate,updates)=>({...oldstate,...updates}),{
         breakfast:false,
         lunch:false,
         dinner:false,
+
+        exercise1:false,
+        exercise2:false,
+        exercise3:false
+
     })
     const handleChange = (event, name) => {
         let obj ={}
@@ -71,6 +81,14 @@ export default function ExceptionalUserPlan() {
         }).catch((err)=>{})
 
     },[])
+
+
+    useEffect(()=>{
+      exerciseServices.getAllExercises().then((data)=>{  
+        setExerciseList(data.data.data)
+      }).catch((err)=>{})
+
+  },[])  
     useEffect(()=>{
         ApiServices.getBreakfast().then((data)=>{
             setBreakfastList(data.data)
@@ -178,6 +196,76 @@ export default function ExceptionalUserPlan() {
         </Select>
       </FormControl>
     </div>
+
+    <div>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">Exercise 1</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={dropDowns.exercise1}
+          onClose={()=>handleClose('exercise1')}
+          onOpen={ ()=> handleOpen('exercise1')}
+          value={camp.exercise1}
+          onChange={e=>  handleChange(e,'exercise1')}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {
+              exerciseList.length>0&&
+              exerciseList.map((item)=><MenuItem value={item._id}>{item.name}</MenuItem>)
+          }
+        </Select>
+      </FormControl>
+    </div>
+    
+    <div>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">Exercise 2</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={dropDowns.exercise2}
+          onClose={()=>handleClose('exercise2')}
+          onOpen={ ()=> handleOpen('exercise2')}
+          value={camp.exercise2}
+          onChange={e=>  handleChange(e,'exercise2')}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {
+              exerciseList.length>0&&
+              exerciseList.map((item)=><MenuItem value={item._id}>{item.name}</MenuItem>)
+          }
+        </Select>
+      </FormControl>
+    </div>
+    <div>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">Exercise 3</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={dropDowns.exercise3}
+          onClose={()=>handleClose('exercise3')}
+          onOpen={ ()=> handleOpen('exercise3')}
+          value={camp.exercise3}
+          onChange={e=>  handleChange(e,'exercise3')}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {
+              exerciseList.length>0&&
+              exerciseList.map((item)=><MenuItem value={item._id}>{item.name}</MenuItem>)
+          }
+        </Select>
+      </FormControl>
+    </div>
+ 
+ 
     {
         update.update && <button className={"btn btn-primary col-md-2 mt-5 mr-4"} onClick={updateEceptionalPlan}>Update</button>
     }
