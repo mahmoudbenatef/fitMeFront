@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
-
+import QuestionerComponent from "../userDashboard/QuestionerComponent"
+import AvailCampsComponent from "../userDashboard/AvailCampsComponent"
+import bg from "../../assets/bg-1.jpeg";
+import DayPlan from "../plan/DayPlan";
 export default function UserHomeComponent() {
   let { path} = useRouteMatch();
   const authentication = useContext(authContext);
@@ -18,30 +21,39 @@ export default function UserHomeComponent() {
     }
   }, []);
   return (
-      <>
-        <h1>Hello user</h1>
-        {/* <RateComponent bookId="609964ba4d02fa267a53acf4" userRating={2} size="small"></RateComponent>
-       <ShelfComponent bookId="609964ba4d02fa267a53acf4" ></ShelfComponent> */}
+      <
+        
+      >
+      <div
+      className={
+          "d-flex flex-column min-vh-100 justify-content-start"
+      }
+      style={{
+          backgroundImage: `url(${bg})`, backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+          margin: "0"
+      }}>
         <Switch>
 
-          {/*<Route key={1} path={`${path}/books`}>*/}
-          {/*  <BooksCardContainerComponent></BooksCardContainerComponent>*/}
-          {/*</Route>*/}
-
-          {/* <Route key={2} path={`${path}/authors`}>
-            <AuthorsList />
+          <Route key={1} path={`${path}/questioner`}>
+            <QuestionerComponent/>
           </Route>
 
-            <Route key={3} path={`${path}/authors/:id"`}>
-                <AuthorDetails />
-            </Route> */}
+           <Route key={2} path={`${path}/camps`}>
+            <AvailCampsComponent/>
+          </Route>
+
 
             {/*<Route path="/authors/:id">*/}
             {/*  <AuthorDetails />*/}
             {/*</Route>*/}
+            <Route exact path={`${path}/plan`}>
+             <DayPlan/>
+            </Route>
 
         </Switch>
-
+        </div>
       </>
   );
 }

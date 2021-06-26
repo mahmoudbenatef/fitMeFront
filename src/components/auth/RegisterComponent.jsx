@@ -2,7 +2,7 @@ import axios from "axios";
 import {useContext, useEffect, useReducer, useState} from "react";
 import {Link, useHistory} from "react-router-dom";
 import {API} from "../../API/urls";
-import bg from "../../assets/fitnes.jpeg";
+import bg from "../../assets/bck1.jpg";
 import {authContext} from "../../contexts/authContext";
 import {validateAllInputs} from "../../helper/validateFormErrors";
 import ErrorComponent from "../reusableComponents/ErrorComponent";
@@ -719,6 +719,8 @@ export default function RegisterComponent({parent}) {
                                     onChange={(e) => {
                                         setUser({weight: e.target.value});
                                     }}
+
+                                    
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     placeholder={"weight"}

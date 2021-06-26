@@ -1,0 +1,8 @@
+#exerciseContainer {
+  background-image: url("../assets/fitnes.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  overflow-y: auto;
+}

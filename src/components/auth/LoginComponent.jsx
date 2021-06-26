@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useContext, useEffect, useReducer, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { ApiServices } from "../../API/ApiServices";
-import bg from "../../assets/stars.png";
+import bg from "../../assets/bck2.jpg";
 import { authContext } from "../../contexts/authContext";
 import { mySessionStorage } from "../../helper/LocalStorge";
 import { validateAllInputs } from "../../helper/validateFormErrors";

@@ -1,7 +1,10 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import { mySessionStorage } from "../../helper/LocalStorge";
+
+import "../../styles/Nav.css";
+import { BASE_URL } from "../../API/urls";
 export default function NavbarComponent() {
   const authentication = useContext(authContext);
   const history = useHistory();
@@ -12,94 +15,89 @@ export default function NavbarComponent() {
     authentication.setAuth({
       authed: false,
     });
-    history.push("/");
+    history.push("/login");
   };
   return (
     <>
-      {/*<nav className="navbar navbar-expand-lg navbar-light">*/}
-      {/*  <Link className="navbar-brand" style={{ marginLeft: "1rem" }} to="/">*/}
-      {/*    <img src={logo} height="45" alt="" />*/}
-      {/*  </Link>*/}
-      {/*  <button*/}
-      {/*    className="navbar-toggler"*/}
-      {/*    type="button"*/}
-      {/*    data-toggle="collapse"*/}
-      {/*    data-target="#navbarSupportedContent"*/}
-      {/*    aria-controls="navbarSupportedContent"*/}
-      {/*    aria-expanded="false"*/}
-      {/*    aria-label="Toggle navigation"*/}
-      {/*  >*/}
-      {/*    <span className="navbar-toggler-icon"></span>*/}
-      {/*  </button>*/}
+      <nav
+        className="navbar navbar-expand-lg navbar-light justify-content-between "
+        // style={{backgroundColor:"#212529", color:"white"}}
+      >
+        <div>
+          {isAdmin() ? (
+            <ul className="navbar-nav mr-auto">
+              <li>
+                <Link
+                  className="nav-link"
+                  to={isAdmin() ? "/admin/categories" : "/categories"}
+                >
+                  Categories
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" to={"/admin/camps"}>
+                  Camps
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" to={"/admin/mealslist"}>
+                  Meals
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" to={"/admin/exercsie"}>
+                Excersises
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <>
+              <ul className="navbar-nav mr-auto">
+                <li>
+                  <Link className="nav-link" to={"/user/questioner"}>
+                    Questioner
+                  </Link>
+                </li>
+                <li>
+                  <Link className="nav-link" to={"/user/camps"}>
+                    Camps
+                  </Link>
+                </li>
+                <li>
+                  <Link className="nav-link" to={"/user/plan"}>
+                    Plan
+                  </Link>
+                </li>
+              </ul>
+            </>
+          )}
+        </div>
+        <div className={" "}>
+          <ul className="navbar-nav mr-auto">
+            <li>
+              <img
+                style={{ borderRadius: "2rem" }}
+                src={BASE_URL + "/" + mySessionStorage.getCurrentUser().avatar}
+                height="40"
+                width="40"
+                alt=""
+              />
+            </li>
 
-      {/*  <div*/}
-      {/*    className="collapse navbar-collapse justify-content-between "*/}
-      {/*    id="navbarSupportedContent"*/}
-      {/*  >*/}
-      {/*    <ul className="navbar-nav mr-auto">*/}
-      {/*      <li className="nav-item active">*/}
-      {/*        <Link className="nav-link" to="/">*/}
-      {/*          Home*/}
-      {/*        </Link>*/}
-      {/*      </li>*/}
-      {/*      <li className="nav-item active">*/}
-      {/*        <Link*/}
-      {/*          className="nav-link"*/}
-      {/*          to={isAdmin() ? "/admin/categories" : "/categories"}*/}
-      {/*        >*/}
-      {/*          Categories*/}
-      {/*        </Link>*/}
-      {/*      </li>*/}
-      {/*      <li className="nav-item active">*/}
-      {/*        <Link*/}
-      {/*          className="nav-link"*/}
-      {/*          to={isAdmin() ? "/admin/books" : "/books"}*/}
-      {/*        >*/}
-      {/*          Books*/}
-      {/*        </Link>*/}
-      {/*      </li>*/}
-      {/*      <li className="nav-item active">*/}
-      {/*        <Link*/}
-      {/*          className="nav-link"*/}
-      {/*          to={isAdmin() ? "/admin/authors" : "/authors"}*/}
-      {/*        >*/}
-      {/*          Authors*/}
-      {/*        </Link>*/}
-      {/*      </li>*/}
-      {/*      {isAdmin() ? (*/}
-      {/*        ""*/}
-      {/*      ) : (*/}
-      {/*        <SearchDropdownComponent></SearchDropdownComponent>*/}
-      {/*      )}*/}
-      {/*    </ul>*/}
-      {/*    <ul className="navbar-nav mr-auto">*/}
-      {/*      {isAdmin() ? (*/}
-      {/*        ""*/}
-      {/*      ) : (*/}
-      {/*        <img*/}
-      {/*          style={{ borderRadius: "2rem" }}*/}
-      {/*          src={BASE_URL + "/" + mySessionStorage.getCurrentUser().avatar}*/}
-      {/*          height="40"*/}
-      {/*          width="40"*/}
-      {/*          alt=""*/}
-      {/*        />*/}
-      {/*      )}*/}
-      {/*      <li className="nav-item active nav-link">*/}
-      {/*        {mySessionStorage.getCurrentUser().firstname}{" "}*/}
-      {/*        {mySessionStorage.getCurrentUser().lastname}*/}
-      {/*      </li>*/}
-      {/*      <li*/}
-      {/*        onClick={logout}*/}
-      {/*        className="nav-item nav-link"*/}
-      {/*        style={{ cursor: "pointer" }}*/}
-      {/*      >*/}
-      {/*        logout*/}
-      {/*        <ExitToAppIcon></ExitToAppIcon>*/}
-      {/*      </li>*/}
-      {/*    </ul>*/}
-      {/*  </div>*/}
-      {/*</nav>*/}
-      <h1>This is nav</h1>
+            <li className=" nav-link">
+              {mySessionStorage.getCurrentUser().firstname}{" "}
+              {mySessionStorage.getCurrentUser().lastname}
+            </li>
+
+            <li>
+              <li className="nav-link" onClick={logout}>
+                {" "}
+                Logout
+              </li>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </>
   );
 }
