@@ -44,7 +44,10 @@ export default function QuesionerComponent() {
 
     function saveQuestioner() {
         isUpdate.state ?
-            ApiServices.updateQuestioner(isUpdate._id,questioner)
+            ApiServices.updateQuestioner(isUpdate._id,questioner).then(() => {
+                history.push("/user");
+    
+            })
             :
         ApiServices.saveQuestioner(questioner).then(() => {
             history.push("/user");

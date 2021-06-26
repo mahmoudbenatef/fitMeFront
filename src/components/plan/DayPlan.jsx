@@ -4,6 +4,7 @@ import { Button, Card, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { mySessionStorage } from "../../helper/LocalStorge";
 import Divider from "@material-ui/core/Divider";
+import ReactStars from "react-rating-stars-component";
 const BASE_URL = "http://localhost:3001/";
 const video_URL = "https://www.youtube.com/embed/";
 function DayPlan() {
@@ -11,6 +12,8 @@ function DayPlan() {
   const [showBreakFast, setShowBreakFast] = useState(false);
   const [showLaunch, setShowLaunch] = useState(false);
   const [showDinner, setShowDinner] = useState(false);
+  const [showRate, setShowRate] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const [showExercise1, setShowExercise1] = useState(false);
   const [showExercise2, setShowExercise2] = useState(false);
@@ -19,6 +22,7 @@ function DayPlan() {
   const handleCloseBreakFast = () => setShowBreakFast(false);
   const handleCloseLaunch = () => setShowLaunch(false);
   const handelCloseDinner = () => setShowDinner(false);
+  const handelCloseRate = () => setShowRate(false);
 
   const handelCloseExercise1 = () => setShowExercise1(false);
   const handelCloseExercise2 = () => setShowExercise2(false);
@@ -27,6 +31,7 @@ function DayPlan() {
   const handleShowBreakFast = () => setShowBreakFast(true);
   const handleShowLaunch = () => setShowLaunch(true);
   const handelShowDinner = () => setShowDinner(true);
+  const handelShowRate = () => setShowRate(true);
 
   const handelShowExercise1 = () => setShowExercise1(true);
   const handelShowExercise2 = () => setShowExercise2(true);
@@ -37,18 +42,58 @@ function DayPlan() {
     currentDate.setUTCHours(0, 0, 0, 0);
     return currentDate.toISOString();
   };
+  const ratingChanged = async (newRating) => {
+    console.log(newRating);
+    await axios.patch(
+      `${BASE_URL}plan/${
+        mySessionStorage.getCurrentUser()._id
+      }/${getCurrentDate()}/review`,
+      { rate: newRating }
+    );
+    handelCloseRate();
+  };
 
   useEffect(() => {
     console.log("test");
     console.log(Date.now);
     const fetchApi = async () => {
-      const todayPlan = await axios.get(
-        `${BASE_URL}plan/${
-          mySessionStorage.getCurrentUser()._id
-        }/${getCurrentDate()}`
-      );
-      console.log(todayPlan);
-      setDietPlan(todayPlan.data);
+      try {
+        const todayPlan = await axios.get(
+          `${BASE_URL}plan/${
+            mySessionStorage.getCurrentUser()._id
+          }/${getCurrentDate()}`
+        );
+
+        if (todayPlan != null) {
+          setLoaded(true);
+          setDietPlan(todayPlan.data);
+
+          const reviewsArr = todayPlan.data.camp.reviews;
+          console.log(reviewsArr);
+          let showRateFlag = true;
+          reviewsArr.forEach((currentReviwer) => {
+            if (mySessionStorage.getCurrentUser()._id == currentReviwer.user) {
+              showRateFlag = false;
+            }
+          });
+
+          let campDate = new Date(todayPlan.data.camp.date);
+          campDate?.setDate(campDate.getDate() + 2);
+          console.log(campDate);
+
+          if (
+            campDate &&
+            getCurrentDate() == campDate.toISOString() &&
+            showRateFlag
+          ) {
+            setShowRate(true);
+          }
+        } else {
+          setLoaded(false);
+        }
+      } catch (error) {
+        window.alert(error);
+      }
     };
     fetchApi();
   }, []);
@@ -279,7 +324,7 @@ function DayPlan() {
 
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 ">
-          <iframe
+            <iframe
               style={{ width: "16rem" }}
               src={`${video_URL}${dietPlan?.exercise1?.videoId}`}
               frameBorder="0"
@@ -287,7 +332,10 @@ function DayPlan() {
               allowFullScreen
               title="Embedded youtube"
             />
-            <Card.Title className="text-primary text-center"  onClick={handelShowExercise1}>
+            <Card.Title
+              className="text-primary text-center"
+              onClick={handelShowExercise1}
+            >
               Exercise 1
             </Card.Title>
             <br />
@@ -342,7 +390,7 @@ function DayPlan() {
         </Card>
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 align-items-center">
-          <iframe
+            <iframe
               style={{ width: "16rem" }}
               src={`${video_URL}${dietPlan?.exercise2?.videoId}`}
               frameBorder="0"
@@ -350,8 +398,11 @@ function DayPlan() {
               allowFullScreen
               title="Embedded youtube"
             />
-          
-            <Card.Title className="text-primary text-center"   onClick={handelShowExercise2}>
+
+            <Card.Title
+              className="text-primary text-center"
+              onClick={handelShowExercise2}
+            >
               exercise 2
             </Card.Title>
             <br />
@@ -405,7 +456,7 @@ function DayPlan() {
         </Card>
         <Card style={{ width: "18rem" }}>
           <Card.Body className="form-group mt-5 align-items-center">
-          <iframe
+            <iframe
               style={{ width: "16rem" }}
               src={`${video_URL}${dietPlan?.exercise3?.videoId}`}
               frameBorder="0"
@@ -472,6 +523,28 @@ function DayPlan() {
             </Modal>
           </Card.Body>
         </Card>
+
+        <Modal show={showRate} onHide={handelCloseRate} animation={true}>
+          <Modal.Header closeButton>
+            <Modal.Title>add your rate to camp</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {" "}
+            <div>
+              <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                activeColor="#ffd700"
+              />
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handelCloseRate}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );
