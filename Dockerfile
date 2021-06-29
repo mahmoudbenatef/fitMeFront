@@ -7,7 +7,8 @@ RUN mkdir /home/react/code
 WORKDIR /home/react/code
 COPY  --chown=react:reactgroup package.json .
 RUN ls
-RUN yarn install  --network-timeout 100000
+#RUN yarn install  --network-timeout 100000
+RUN npm install
 COPY . .
 RUN npm run build --prod 
 #EXPOSE 3000
