@@ -5,13 +5,16 @@ import { mySessionStorage } from "../../../../helper/LocalStorge";
 
 import {ApiServices} from "../../../../API/ApiServices";
 
-export default function Conversations(){
+export default function Conversations({setCurrentConversation}){
     const [conversations,setConversations]= useState([]);
+    // const [currentChat, setCurrentChat] = useState({});
     useEffect( ()=>{
         
    const getConversations = async ()=> {
     const {data:data} =  await  ApiServices.getConversations(mySessionStorage.getCurrentUser()._id)
     setConversations(data);
+    
+    data.length>0?setCurrentConversation(data[0]): console.log('aa'); ;
     }
     getConversations();
 
@@ -19,6 +22,7 @@ export default function Conversations(){
 
     return(
         <>
+        <h2>Conversations</h2>
         <div className="conversations">
 
         {
@@ -30,7 +34,7 @@ export default function Conversations(){
 
                 return   ( 
                 <>   
-                <div className={"conversation"}>
+                <div className={"conversation"} onClick={()=>setCurrentConversation(conversation)}>
 
                  <img
                  className={"conversation-img"}

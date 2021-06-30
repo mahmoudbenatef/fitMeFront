@@ -13,6 +13,7 @@ export const API = {
   questioner: () => `${BASE_URL}/questioner/`,
   user: () => `${BASE_URL}/users/`,
   conversations: () => `${BASE_URL}/conversations/`,
+  messages: () => `${BASE_URL}/messages/`,
 };
 
 export const BOOK_API = {

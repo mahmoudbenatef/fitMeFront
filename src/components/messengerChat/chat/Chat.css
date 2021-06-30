@@ -1,0 +1,35 @@
+.sender{
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: blue;
+}
+.receiver{
+    background-color: darkgray;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+}
+.messages{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 82%;
+    margin: 10px;
+    overflow: scroll;
+}
+.send-message-input{
+    width: 70%;
+    display: inline;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.send-message-button{
+    width: 18%;
+}
