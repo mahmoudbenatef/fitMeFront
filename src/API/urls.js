@@ -12,6 +12,7 @@ export const API = {
   token: () => mySessionStorage.getToken(),
   questioner: () => `${BASE_URL}/questioner/`,
   user: () => `${BASE_URL}/users/`,
+  conversations: () => `${BASE_URL}/conversations/`,
 };
 
 export const BOOK_API = {

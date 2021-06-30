@@ -1,0 +1,15 @@
+.conversations{
+
+}
+.conversation{
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+.conversation-img{
+    margin-right: 5%;
+    height: 50px;
+    width: 50px;
+}
+.name{
+font-size: 30px;
+}

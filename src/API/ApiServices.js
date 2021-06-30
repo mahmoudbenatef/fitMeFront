@@ -219,4 +219,11 @@ export const ApiServices = {
       },
     });
   },
+  getConversations(user) {
+    return axios.get(API.conversations() + `/${user}`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
 };
