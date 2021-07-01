@@ -37,19 +37,19 @@ export default function Messenger(){
     // const [socket ,setSocket]=useState(null)
     const socket = useRef()
     const [newMessage, setNewMessage] = useState(0)
+    // useEffect(()=>{
+    // },[])
     useEffect(()=>{
         socket.current =io("ws://localhost:8900")
-    },[])
-    useEffect(()=>{
         socket.current.on("you got new Message", ()=>{
-            setNewMessage(newMessage+1)
+            // alert(newMessage)
+            setNewMessage(Math.floor((Math.random() * 100000) + 1))
         })
         socket.current.emit("addUser",mySessionStorage.getCurrentUser()._id)
         socket.current.on("getUsers",users=>{
             console.log(users);
-
         })
-    },[socket])
+    },[])
     return(
         <>
         <div className="messanger">
