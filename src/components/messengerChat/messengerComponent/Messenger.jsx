@@ -1,11 +1,14 @@
 import Conversations from "./conversations/Conversations";
 import "./Messenger.css";
 import Chat from "../chat/Chat.jsx";
+import Users from "../users/Users"
 import { useEffect, useRef, useState } from "react";
 import {io} from "socket.io-client";
 import { mySessionStorage } from "../../../helper/LocalStorge";
 export default function Messenger(){
     const [currentConversation, setCurrentConversation] = useState({}) 
+    const [conversations,setConversations]= useState([]);
+
     // const [socket ,setSocket]=useState(null)
     const socket = useRef(io("ws://localhost:8900"))
     const [newMessage, setNewMessage] = useState(0)
@@ -27,7 +30,7 @@ export default function Messenger(){
         <div className="messanger">
 
             <div className="conversations-wrapper">
-                <Conversations setCurrentConversation= {setCurrentConversation}/>
+                <Conversations conversations={conversations} setConversations={setConversations} setCurrentConversation= {setCurrentConversation}/>
 
             </div>
             <div className="chat-wrapper">
@@ -35,7 +38,7 @@ export default function Messenger(){
             </div>
 
             <div className="users-wrapper">
-    fdf            
+    <Users conversations={conversations} setCurrentConversation={setCurrentConversation} />            
             </div>
         </div>
         </>

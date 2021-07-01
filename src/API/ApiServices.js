@@ -242,4 +242,11 @@ export const ApiServices = {
       },
     });
   },
+  getUsers() {
+    return axios.get(API.user(), {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
 };

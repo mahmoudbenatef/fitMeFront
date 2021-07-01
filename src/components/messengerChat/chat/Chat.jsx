@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./Chat.css"
 import {ApiServices} from "../../../API/ApiServices";
 import {mySessionStorage} from "../../../helper/LocalStorge";
@@ -8,6 +8,7 @@ export default function Chat({currentConversation,socket,newMessage}) {
     const[messageAdded , setMessageAdded]=useState(0)
     const[messages, setMessages] = useState([])
     const [message, setMessage] =  useState("")
+    const scrollRef = useRef();
     useEffect(()=>{
         const getMessages = async()=>{
         const {data:data} = await ApiServices.getMessages(currentConversation._id)
@@ -16,6 +17,9 @@ export default function Chat({currentConversation,socket,newMessage}) {
         }
          Object.keys(currentConversation).length !== 0? getMessages(): console.log("none");
     },[currentConversation,messageAdded, newMessage] )
+    useEffect(()=>{
+        scrollRef?.current?.scrollIntoView({behavior:"smooth"})
+    },[messages])
     function sendMessage(){
         const otherUser = currentConversation.users.filter(user => user._id !== mySessionStorage.getCurrentUser()._id)[0]
         ApiServices.sendMessage({sender:mySessionStorage.getCurrentUser()._id,receiver:otherUser._id, conversation:currentConversation._id,message}).then(()=> {
@@ -37,7 +41,7 @@ export default function Chat({currentConversation,socket,newMessage}) {
         {
             messages.map(message=>(
                 <>
-                    <div className={message.sender._id === mySessionStorage.getCurrentUser()._id?"sender":"receiver"}>
+                    <div ref={scrollRef} className={message.sender._id === mySessionStorage.getCurrentUser()._id?"sender":"receiver"}>
 
                 <span >{message.message}</span>
                 {

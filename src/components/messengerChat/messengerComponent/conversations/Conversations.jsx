@@ -5,8 +5,7 @@ import { mySessionStorage } from "../../../../helper/LocalStorge";
 
 import {ApiServices} from "../../../../API/ApiServices";
 
-export default function Conversations({setCurrentConversation}){
-    const [conversations,setConversations]= useState([]);
+export default function Conversations({setCurrentConversation,conversations,setConversations}){
     // const [currentChat, setCurrentChat] = useState({});
     useEffect( ()=>{
         

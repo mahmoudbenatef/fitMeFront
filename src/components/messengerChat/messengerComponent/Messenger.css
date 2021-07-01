@@ -14,7 +14,7 @@ background-color: lightgray;
 }
 .users-wrapper{
     flex-basis: 20%;
-background-color: green;
-flex-grow: 1;
+    background-color: rgb(171, 173, 173);
+    flex-grow: 1;
 }
 

@@ -20,10 +20,11 @@
 .messages{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     height: 80%;
     margin: 10px;
     /* overflow: scroll; */
+    overflow-y: scroll;
 }
 .send-message-input{
     width: 70%;
