@@ -4,7 +4,7 @@ import { mySessionStorage } from "../../../helper/LocalStorge";
 
 import {ApiServices} from "../../../API/ApiServices";
 
-export default function Users({conversations,setCurrentConversation}){
+export default function Users({conversations,setCurrentConversation, setNewConversation}){
     const [users, setUsers]= useState([])
     useEffect(()=>{
         const getUsers = async()=>{
@@ -16,7 +16,14 @@ export default function Users({conversations,setCurrentConversation}){
     function handleUserClicked(user){
         const conversation = conversations.filter(conversation => conversation.users.filter(currUser => currUser._id === user._id).length>0)[0]
         if(conversation)
-         setCurrentConversation(conversation)
+        {
+            setCurrentConversation(conversation)
+            setNewConversation(null)
+        }
+    else {
+        setNewConversation({state:true,users:[user._id,mySessionStorage.getCurrentUser()._id]})
+    }
+     
     }
     return (
         <>

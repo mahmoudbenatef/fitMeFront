@@ -249,4 +249,12 @@ export const ApiServices = {
       },
     });
   },
+  addNewConversation(users) {
+    return axios.post(API.conversations(), users, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      },
+    });
+  },
 };

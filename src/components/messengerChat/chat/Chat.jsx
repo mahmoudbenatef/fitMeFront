@@ -5,6 +5,7 @@ import {mySessionStorage} from "../../../helper/LocalStorge";
 import { BASE_URL } from "../../../API//urls";
 
 export default function Chat({currentConversation,socket,newMessage}) {
+    console.log(JSON.stringify(currentConversation))
     const[messageAdded , setMessageAdded]=useState(0)
     const[messages, setMessages] = useState([])
     const [message, setMessage] =  useState("")
@@ -15,7 +16,7 @@ export default function Chat({currentConversation,socket,newMessage}) {
         // alert(JSON.stringify(data))
         setMessages(data)    
         }
-         Object.keys(currentConversation).length !== 0? getMessages(): console.log("none");
+         currentConversation? getMessages(): console.log("none");
     },[currentConversation,messageAdded, newMessage] )
     useEffect(()=>{
         scrollRef?.current?.scrollIntoView({behavior:"smooth"})
@@ -32,7 +33,7 @@ export default function Chat({currentConversation,socket,newMessage}) {
     return (
         <>
          {
-           Object.keys(currentConversation).length !== 0&&   [currentConversation.users.filter(user => user._id !== mySessionStorage.getCurrentUser()._id)[0]].map(user=> 
+           currentConversation && currentConversation.users&&   [currentConversation.users.filter(user => user._id !== mySessionStorage.getCurrentUser()._id)[0]].map(user=> 
                 (<h1>{user.firstname + " "+ user.lastname }</h1>))
 
             } 

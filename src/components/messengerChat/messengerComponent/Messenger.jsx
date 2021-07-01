@@ -5,9 +5,23 @@ import Users from "../users/Users"
 import { useEffect, useRef, useState } from "react";
 import {io} from "socket.io-client";
 import { mySessionStorage } from "../../../helper/LocalStorge";
+import { ApiServices } from "../../../API/ApiServices";
 export default function Messenger(){
-    const [currentConversation, setCurrentConversation] = useState({}) 
+    const [currentConversation, setCurrentConversation] = useState(null) 
     const [conversations,setConversations]= useState([]);
+    const[newConversation, setNewConversation]= useState(null)
+    useEffect(()=>{
+        const addNewConversation = async()=>{
+          const {data:data} =  await ApiServices.addNewConversation({users:newConversation.users})
+        //   alert(JSON.stringify(data))
+          setCurrentConversation(data)
+        }
+        if(newConversation)
+        {
+            addNewConversation()
+        }
+
+    },[newConversation])
 
     // const [socket ,setSocket]=useState(null)
     const socket = useRef(io("ws://localhost:8900"))
@@ -38,7 +52,7 @@ export default function Messenger(){
             </div>
 
             <div className="users-wrapper">
-    <Users conversations={conversations} setCurrentConversation={setCurrentConversation} />            
+    <Users  setNewConversation={setNewConversation} conversations={conversations} setCurrentConversation={setCurrentConversation} />            
             </div>
         </div>
         </>
