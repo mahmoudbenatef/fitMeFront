@@ -47,9 +47,9 @@ export default function UserHomeComponent() {
 
 
 
-            {/* <Route exact path={`${path}/plan`}>
+            <Route exact path={`${path}/plan`}>
              <DayPlan/>
-            </Route> */}
+            </Route>
 
         </Switch>
         </div>

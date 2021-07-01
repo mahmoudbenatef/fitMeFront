@@ -5,16 +5,16 @@
 }
 .conversations-wrapper{
 flex-basis: 20%;
-background-color: rgb(171, 173, 173);
+background-color: white;
 }
 
 .chat-wrapper{
-    flex-basis: 60%;
-background-color: lightgray;
+    flex-basis: 50%;
+background-color: white;
 }
 .users-wrapper{
     flex-basis: 20%;
-    background-color: rgb(171, 173, 173);
+    background-color: white;
     flex-grow: 1;
 }
 
