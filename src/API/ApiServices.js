@@ -219,4 +219,42 @@ export const ApiServices = {
       },
     });
   },
+  getConversations(user) {
+    return axios.get(API.conversations() + `${user}`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
+
+  getMessages(conversation) {
+    return axios.get(API.messages() + `${conversation}`, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
+  sendMessage(message) {
+    return axios.post(API.messages(), message, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      },
+    });
+  },
+  getUsers() {
+    return axios.get(API.user(), {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+      },
+    });
+  },
+  addNewConversation(users) {
+    return axios.post(API.conversations(), users, {
+      headers: {
+        Authorization: `JWT ${API.token()}`,
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      },
+    });
+  },
 };
