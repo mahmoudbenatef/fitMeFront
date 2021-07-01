@@ -18,6 +18,7 @@ import { authContext } from "./contexts/authContext";
 import MealComponet from "./components/meal/MealComponet";
 import MealListComponet from "./components/meal/MealListComponet";
 import DayPlan from "./components/plan/DayPlan";
+import MessengerComponent from "./components/messengerChat/messengerComponent/Messenger.jsx"
 
 function App(props) {
   const authentication = useContext(authContext);
@@ -56,6 +57,10 @@ function App(props) {
             <Route path="/admin">
               <AdminHomeComponent />
             </Route>
+            <Route path={`/messenger`}>
+              <MessengerComponent />
+            </Route>
+
           </Switch>
         </div>
       </Router>

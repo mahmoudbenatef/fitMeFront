@@ -31,7 +31,7 @@ export default function Users({conversations,setCurrentConversation, setNewConve
         {
            users && users.filter(user => user._id !== mySessionStorage.getCurrentUser()._id)
            .map(user=>(
-                <h2 onClick={()=>{handleUserClicked(user)}}>{`${user.firstname }  ${user.lastname}`}</h2>
+                <h2 onClick={()=>{handleUserClicked(user)}}>{`${user.firstname }  ${user.lastname} ${user.role ==='admin'? '(admin)': ''}`}</h2>
             ))
         }
         </>

@@ -46,9 +46,6 @@ export default function UserHomeComponent() {
           </Route>
 
 
-            <Route path={`${path}/messenger`}>
-            <MessengerComponent/>
-                       </Route>
 
             {/* <Route exact path={`${path}/plan`}>
              <DayPlan/>
