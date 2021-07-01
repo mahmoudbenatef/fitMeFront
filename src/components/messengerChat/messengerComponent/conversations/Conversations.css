@@ -1,9 +1,12 @@
 .conversations{
+    overflow-y: scroll;
+    height: 90%;
 
 }
 .conversation{
     margin-bottom: 20px;
     margin-left: 15px;
+
 }
 .conversation-img{
     margin-right: 5%;

@@ -35,11 +35,11 @@ export default function Messenger(){
     },[newConversation])
 
     // const [socket ,setSocket]=useState(null)
-    const socket = useRef(io("ws://localhost:8900"))
+    const socket = useRef()
     const [newMessage, setNewMessage] = useState(0)
-    // useEffect(()=>{
-    //     setSocket()
-    // },[])
+    useEffect(()=>{
+        socket.current =io("ws://localhost:8900")
+    },[])
     useEffect(()=>{
         socket.current.on("you got new Message", ()=>{
             setNewMessage(newMessage+1)

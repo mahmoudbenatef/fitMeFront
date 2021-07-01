@@ -28,12 +28,15 @@ export default function Users({conversations,setCurrentConversation, setNewConve
     return (
         <>
         <h1>Users</h1>
+        <div className={"users"} style={{height:"90%" ,width:"90%",overflowY:"scroll"}}>
+
         {
            users && users.filter(user => user._id !== mySessionStorage.getCurrentUser()._id)
            .map(user=>(
                 <h2 onClick={()=>{handleUserClicked(user)}}>{`${user.firstname }  ${user.lastname} ${user.role ==='admin'? '(admin)': ''}`}</h2>
             ))
         }
+        </div>
         </>
     )
 }
