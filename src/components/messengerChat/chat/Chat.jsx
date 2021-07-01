@@ -4,7 +4,7 @@ import {ApiServices} from "../../../API/ApiServices";
 import {mySessionStorage} from "../../../helper/LocalStorge";
 import { BASE_URL } from "../../../API//urls";
 
-export default function Chat({currentConversation}) {
+export default function Chat({currentConversation,socket,newMessage}) {
     const[messageAdded , setMessageAdded]=useState(0)
     const[messages, setMessages] = useState([])
     const [message, setMessage] =  useState("")
@@ -14,14 +14,15 @@ export default function Chat({currentConversation}) {
         // alert(JSON.stringify(data))
         setMessages(data)    
         }
-        
          Object.keys(currentConversation).length !== 0? getMessages(): console.log("none");
-    },[currentConversation,messageAdded])
+    },[currentConversation,messageAdded, newMessage] )
     function sendMessage(){
         const otherUser = currentConversation.users.filter(user => user._id !== mySessionStorage.getCurrentUser()._id)[0]
         ApiServices.sendMessage({sender:mySessionStorage.getCurrentUser()._id,receiver:otherUser._id, conversation:currentConversation._id,message}).then(()=> {
             setMessageAdded(messageAdded+1)
             setMessage("")
+            console.log(socket);
+            socket.current.emit("newMessage",otherUser._id)
         }).catch((err)=>{})
     }
     return (
