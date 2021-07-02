@@ -3,6 +3,7 @@ import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import QuestionerComponent from "../userDashboard/QuestionerComponent"
 import AvailCampsComponent from "../userDashboard/AvailCampsComponent"
+import MessengerComponent from "../messengerChat/messengerComponent/Messenger.jsx"
 import bg from "../../assets/bg-1.jpeg";
 import DayPlan from "../plan/DayPlan";
 export default function UserHomeComponent() {
@@ -45,12 +46,10 @@ export default function UserHomeComponent() {
           </Route>
 
 
-            {/*<Route path="/authors/:id">*/}
-            {/*  <AuthorDetails />*/}
-            {/*</Route>*/}
-            <Route exact path={`${path}/plan`}>
+
+            {/* <Route exact path={`${path}/plan`}>
              <DayPlan/>
-            </Route>
+            </Route> */}
 
         </Switch>
         </div>
