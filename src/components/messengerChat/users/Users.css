@@ -1,4 +1,5 @@
 .users{
     height: 60%;
     overflow-y: scroll;
+    background-color: white;
 }

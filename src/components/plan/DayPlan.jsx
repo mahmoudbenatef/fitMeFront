@@ -78,7 +78,7 @@ function DayPlan() {
           });
 
           let campDate = new Date(todayPlan.data.camp.date);
-          campDate?.setDate(campDate.getDate() + 2);
+          campDate?.setDate(campDate.getDate() + 6);
           console.log(campDate);
 
           if (

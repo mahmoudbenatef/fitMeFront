@@ -220,6 +220,8 @@ export const ApiServices = {
     });
   },
   getConversations(user) {
+    console.log("tag1:plz");
+    console.log(API.conversations() + `${user}`);
     return axios.get(API.conversations() + `${user}`, {
       headers: {
         Authorization: `JWT ${API.token()}`,
