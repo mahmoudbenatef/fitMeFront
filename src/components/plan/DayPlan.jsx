@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { mySessionStorage } from "../../helper/LocalStorge";
 import Divider from "@material-ui/core/Divider";
 import ReactStars from "react-rating-stars-component";
-const BASE_URL = "http://localhost:3001/";
+import { BASE_URL } from "../../API/urls";
+
 const video_URL = "https://www.youtube.com/embed/";
 function DayPlan() {
   const [dietPlan, setDietPlan] = useState();
@@ -45,7 +46,7 @@ function DayPlan() {
   const ratingChanged = async (newRating) => {
     console.log(newRating);
     await axios.patch(
-      `${BASE_URL}plan/${
+      `${BASE_URL}/plan/${
         mySessionStorage.getCurrentUser()._id
       }/${getCurrentDate()}/review`,
       { rate: newRating }
@@ -59,7 +60,7 @@ function DayPlan() {
     const fetchApi = async () => {
       try {
         const todayPlan = await axios.get(
-          `${BASE_URL}plan/${
+          `${BASE_URL}/plan/${
             mySessionStorage.getCurrentUser()._id
           }/${getCurrentDate()}`
         );
@@ -78,7 +79,7 @@ function DayPlan() {
           });
 
           let campDate = new Date(todayPlan.data.camp.date);
-          campDate?.setDate(campDate.getDate() + 2);
+          campDate?.setDate(campDate.getDate() + 6);
           console.log(campDate);
 
           if (
@@ -141,7 +142,7 @@ function DayPlan() {
                 onChange={() => {}}
                 onClick={async () => {
                   const todayPlan = await axios.patch(
-                    `${BASE_URL}plan/${
+                    `${BASE_URL}/plan/${
                       mySessionStorage.getCurrentUser()._id
                     }/${getCurrentDate()}`,
                     {
@@ -208,7 +209,7 @@ function DayPlan() {
                 onChange={() => {}}
                 onClick={async () => {
                   const todayPlan = await axios.patch(
-                    `${BASE_URL}plan/${
+                    `${BASE_URL}/plan/${
                       mySessionStorage.getCurrentUser()._id
                     }/${getCurrentDate()}`,
                     {
@@ -274,7 +275,7 @@ function DayPlan() {
                 onChange={() => {}}
                 onClick={async () => {
                   const todayPlan = await axios.patch(
-                    `${BASE_URL}plan/${
+                    `${BASE_URL}/plan/${
                       mySessionStorage.getCurrentUser()._id
                     }/${getCurrentDate()}`,
                     {
@@ -351,7 +352,7 @@ function DayPlan() {
                 onChange={() => {}}
                 onClick={async () => {
                   const todayPlan = await axios.patch(
-                    `${BASE_URL}plan/${
+                    `${BASE_URL}/plan/${
                       mySessionStorage.getCurrentUser()._id
                     }/${getCurrentDate()}`,
                     {
@@ -418,7 +419,7 @@ function DayPlan() {
                 onChange={() => {}}
                 onClick={async () => {
                   const todayPlan = await axios.patch(
-                    `${BASE_URL}plan/${
+                    `${BASE_URL}/plan/${
                       mySessionStorage.getCurrentUser()._id
                     }/${getCurrentDate()}`,
                     {
@@ -484,7 +485,7 @@ function DayPlan() {
                 onChange={() => {}}
                 onClick={async () => {
                   const todayPlan = await axios.patch(
-                    `${BASE_URL}plan/${
+                    `${BASE_URL}/plan/${
                       mySessionStorage.getCurrentUser()._id
                     }/${getCurrentDate()}`,
                     {

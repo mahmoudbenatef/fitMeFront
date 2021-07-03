@@ -46,7 +46,12 @@ export default function NavbarComponent() {
               </li>
               <li>
                 <Link className="nav-link" to={"/admin/exercsie"}>
-                Excersises
+                  Excersises
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" to={"/messenger"}>
+                  Messenger
                 </Link>
               </li>
             </ul>
@@ -66,6 +71,11 @@ export default function NavbarComponent() {
                 <li>
                   <Link className="nav-link" to={"/user/plan"}>
                     Plan
+                  </Link>
+                </li>
+                <li>
+                  <Link className="nav-link" to={"/messenger"}>
+                    Messenger
                   </Link>
                 </li>
               </ul>

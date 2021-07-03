@@ -9,7 +9,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-const BASE_URL = "http://localhost:3001/";
+import { BASE_URL } from "../../API/urls";
+
+
+
 const mealTypes = {
   breakfast: {
     id: "breakfast",
@@ -51,7 +54,7 @@ function MealComponet() {
   const saveMeal = async (e) => {
     e.preventDefault();
     if (id) {
-      let mealToSave = await axios.patch(`${BASE_URL}meals/${id}`, {
+      let mealToSave = await axios.patch(`${BASE_URL}/meals/${id}`, {
         name,
         recipe,
         mealType,
@@ -60,7 +63,7 @@ function MealComponet() {
       });
       console.log(mealToSave);
     } else {
-      let mealToSave = await axios.post(`${BASE_URL}meals`, {
+      let mealToSave = await axios.post(`${BASE_URL}/meals`, {
         name,
         recipe,
         mealType,
@@ -73,7 +76,7 @@ function MealComponet() {
   useEffect(() => {
     const fetchApi = async () => {
       console.log("hello");
-      const categories = await axios.get(`${BASE_URL}category`);
+      const categories = await axios.get(`${BASE_URL}/category`);
       if (categories) {
         console.log();
         setNotAllowedTo([...categories.data.data]);
@@ -85,7 +88,7 @@ function MealComponet() {
     if (id) {
       const fetchApi = async () => {
         console.log("hello");
-        const currentMeal = await axios.get(`${BASE_URL}meals/${id}`);
+        const currentMeal = await axios.get(`${BASE_URL}/meals/${id}`);
         console.log(currentMeal.data);
         setName(currentMeal.data.name);
         setRecipe(currentMeal.data.recipe);
