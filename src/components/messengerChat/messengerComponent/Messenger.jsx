@@ -46,7 +46,7 @@ export default function Messenger(){
         socket.current =io("ws://localhost:8900")
         socket.current.on("you got new Message", ()=>{
             // alert(newMessage)
-            setNewMessage(Math.floor((Math.random() * 100000) + 1))
+            setNewMessage(Math.floor((Math.random() * 100000000000000) + 1))
         })
         socket.current.emit("addUser",mySessionStorage.getCurrentUser()._id)
         socket.current.on("getUsers",users=>{

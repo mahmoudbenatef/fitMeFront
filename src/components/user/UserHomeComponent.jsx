@@ -4,7 +4,7 @@ import { authContext } from "../../contexts/authContext";
 import QuestionerComponent from "../userDashboard/QuestionerComponent"
 import AvailCampsComponent from "../userDashboard/AvailCampsComponent"
 import MessengerComponent from "../messengerChat/messengerComponent/Messenger.jsx"
-import bg from "../../assets/bg-1.jpeg";
+import bg from "../../assets/user-bg.jpeg";
 import DayPlan from "../plan/DayPlan";
 export default function UserHomeComponent() {
   let { path} = useRouteMatch();

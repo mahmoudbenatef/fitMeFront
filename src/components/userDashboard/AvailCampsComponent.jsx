@@ -42,6 +42,10 @@ export default function AvailCampsComponent (){
                         </thead>
                         <tbody>
                         {
+                            !mySessionStorage.getCurrentUser().categoryID ?
+                                
+                                  <tr><td colSpan={3}>Please add your questioner first</td></tr>
+                            :
                         camps.length > 0 ?
                             camps.map((camp,index)=>{
                                 return ( <tr>
