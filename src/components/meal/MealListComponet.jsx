@@ -3,6 +3,9 @@ import { Table, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../API/urls";
+
+
 
 function MealListComponet() {
   const [meals, setmeals] = useState([]);
@@ -11,7 +14,7 @@ function MealListComponet() {
  
   useEffect(() => {
     const fetchApi = async () => {
-      const fetchedMeals = await axios.get("http://localhost:3001/meals");
+      const fetchedMeals = await axios.get(`${BASE_URL}/meals`);
       if (fetchedMeals) {
         setmeals(fetchedMeals.data);
       }
@@ -54,7 +57,7 @@ function MealListComponet() {
                 className="btn btn-danger"
                   onClick={async () => {
                     await axios.delete(
-                      "http://localhost:3001/meals/" + currentMeal._id
+                      BASE_URL+"/meals/" + currentMeal._id
                     );
                     setrender(!render);
                   }}
