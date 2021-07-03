@@ -1,12 +1,12 @@
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import React, { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
 import { Link, useRouteMatch } from "react-router-dom";
 import exerciseServices from "../../../API/exerciseServices";
 import statusCode from "../../../helper/statusCode";
 import { default as LoadingComponent } from "../../reusableComponents/LoadingComponent";
 import PaginationComponent from "../../reusableComponents/PaginationComponent";
-import {Table} from "react-bootstrap";
 export default function ListExerciseComponent() {
   let { path, url } = useRouteMatch();
   const [allExercises, setAllExercises] = useState([]);
@@ -42,7 +42,7 @@ export default function ListExerciseComponent() {
     }
   };
   return (
-    <>
+    <div className="container col">
       {loading ? (
         <LoadingComponent />
       ) : (
@@ -54,7 +54,9 @@ export default function ListExerciseComponent() {
             Create New Exercise
           </Link>
           <Table striped bordered hover variant="dark">
-            <caption className="mt-2 text-center">List of Exercises</caption>
+            <caption className="mt-2" style={{ color: "white" }}>
+              List of Exercises
+            </caption>
             <thead key={-1}>
               <tr>
                 <th scope="col">Name</th>
@@ -87,7 +89,7 @@ export default function ListExerciseComponent() {
                             state: exercise,
                           }}
                         >
-                          <EditIcon fontSize="small" />
+                          <EditIcon fontSize="small" className="text-white" />
                         </Link>
 
                         <span className="btn btn-sm btn-danger m-1">
@@ -119,6 +121,6 @@ export default function ListExerciseComponent() {
           </div>
         </React.Fragment>
       )}
-    </>
+    </div>
   );
 }

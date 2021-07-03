@@ -139,6 +139,7 @@ export default function ExerciseFormComponent({ updated }) {
               class="form-control"
               id="name"
               value={exercise.name}
+              className="form-control bg-transparent text-white "
               minLength={3}
               onChange={(e) => setExercise({ name: e.target.value })}
             />
@@ -154,6 +155,7 @@ export default function ExerciseFormComponent({ updated }) {
               id="description"
               value={exercise.description}
               rows="3"
+              className="form-control bg-transparent text-white "
               minLength={10}
               onChange={(e) => setExercise({ description: e.target.value })}
             ></textarea>
@@ -174,6 +176,7 @@ export default function ExerciseFormComponent({ updated }) {
               id="duration"
               value={exercise.duration}
               minLength={2}
+              className="form-control bg-transparent text-white "
               onChange={(e) => setExercise({ duration: e.target.value })}
             />
             {error.duration ? (
@@ -193,6 +196,7 @@ export default function ExerciseFormComponent({ updated }) {
               id="duration"
               value={exercise.activityType}
               minLength={2}
+              className="form-control bg-transparent text-white "
               onChange={(e) => setExercise({ activityType: e.target.value })}
             />
             {error.activityType ? (
@@ -208,9 +212,9 @@ export default function ExerciseFormComponent({ updated }) {
             </label>
             <input
               type="text"
-              class="form-control"
               id="avgMale"
               minLength={3}
+              className="form-control bg-transparent text-white "
               value={exercise.avgCaloriesMale}
               onChange={(e) => setExercise({ avgCaloriesMale: e.target.value })}
             />
@@ -227,7 +231,7 @@ export default function ExerciseFormComponent({ updated }) {
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control bg-transparent text-white "
               id="avgFemaale"
               value={exercise.avgCaloriesFemale}
               minLength={3}
@@ -249,8 +253,8 @@ export default function ExerciseFormComponent({ updated }) {
             </label>
             <input
               type="text"
-              class="form-control"
               id="notAllowedTo"
+              className="form-control bg-transparent text-white "
               value={exercise.notAllowedTo}
               onChange={(e) => setExercise({ notAllowedTo: e.target.value })}
             />
@@ -262,14 +266,14 @@ export default function ExerciseFormComponent({ updated }) {
             </label>
             <input
               type="text"
-              class="form-control"
               id="notAllowedTo"
+              className="form-control bg-transparent text-white "
               value={exercise.videoId}
               onChange={(e) => setExercise({ videoId: e.target.value })}
             />
           </div>
           <div class="mb-3">
-            <button className="btn btn-success btn-sm">Submit</button>
+            <button className="btn btn-primary btn-sm">Submit</button>
           </div>
         </form>
       </div>

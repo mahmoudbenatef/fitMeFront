@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
+import { Button, Card, Collapse } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { ApiServices } from "../../API/ApiServices";
 import { mySessionStorage } from "../../helper/LocalStorge";
-import { useHistory } from "react-router-dom";
-import { Card, Collapse, Button } from "react-bootstrap";
 
 export default function QuesionerComponent() {
   const history = useHistory();
@@ -51,17 +51,15 @@ export default function QuesionerComponent() {
     isUpdate.state
       ? ApiServices.updateQuestioner(isUpdate._id, questioner).then(() => {
           setTimeout(() => {
-            history.push("/user/camps"); 
+            history.push("/user/camps");
           }, 1000);
-      
         })
       : ApiServices.saveQuestioner(questioner)
           .then((data) => {
             mySessionStorage.setCurrentUser(data.data);
-            
+
             setTimeout(() => {
-                history.push("/user/camps");
-                
+              history.push("/user/camps");
             }, 1000);
           })
           .catch(() => {});
@@ -85,7 +83,11 @@ export default function QuesionerComponent() {
         <div>
           <h1 className="text-info mt-3">
             section 1{" "}
-            <span>
+            <span
+              style={{
+                marginLeft: "7px",
+              }}
+            >
               <Button
                 onClick={() => {
                   setSection1(!section1);
@@ -193,7 +195,7 @@ export default function QuesionerComponent() {
                   })
                 }
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white text-white"
                 aria-describedby="passwordHelpBlock"
               />
             </div>
@@ -210,7 +212,7 @@ export default function QuesionerComponent() {
                   });
                 }}
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
               />
             </div>
@@ -227,7 +229,7 @@ export default function QuesionerComponent() {
                   });
                 }}
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white text-white"
                 aria-describedby="passwordHelpBlock"
               />
             </div>
@@ -246,7 +248,7 @@ export default function QuesionerComponent() {
                   });
                 }}
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
               />
             </div>
@@ -257,7 +259,7 @@ export default function QuesionerComponent() {
               <input
                 type="number"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white bg-transparent text-white"
                 value={questioner.howManyMealsDoYouEatPerDay}
                 onChange={(e) => {
                   setQuestioner({ howManyMealsDoYouEatPerDay: e.target.value });
@@ -272,7 +274,7 @@ export default function QuesionerComponent() {
               <input
                 type="number"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 value={questioner.howManyVegetablePortionsDoYouEatPerDay}
                 onChange={(e) => {
                   setQuestioner({
@@ -288,7 +290,7 @@ export default function QuesionerComponent() {
               <input
                 type="number"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 value={questioner.howManyFruitPortionsDoYouEatPerDay}
                 onChange={(e) => {
                   setQuestioner({
@@ -305,7 +307,7 @@ export default function QuesionerComponent() {
               <input
                 type="number"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 value={questioner.howManyProteinPortionsDoYouEatPerDay}
                 onChange={(e) => {
                   setQuestioner({
@@ -322,7 +324,7 @@ export default function QuesionerComponent() {
               <input
                 type="number"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 value={questioner.howManyCarbohydratePortionsDoYouEatPerDay}
                 onChange={(e) => {
                   setQuestioner({
@@ -339,7 +341,7 @@ export default function QuesionerComponent() {
               <input
                 type="number"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 value={questioner.howManySweetPortionsDoYouEatPerDay}
                 onChange={(e) => {
                   setQuestioner({
@@ -459,7 +461,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={questioner.doYouHaveAnyFoodAllergiesOrIntolerances}
                 onChange={(e) => {
@@ -479,7 +481,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={
                   questioner.pleaseStateTheTypesOfFoodAndBeveragesYouEatInYourGeneralRoutine
@@ -502,7 +504,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={questioner.areThereAnyFoodsYouCannotOrWillNotEat}
                 onChange={(e) => {
@@ -522,7 +524,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={questioner.foodAndBeveragesThatYouWouldLikeToAdd}
                 onChange={(e) => {
@@ -542,7 +544,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={questioner.doYouCurrentlyExercise}
                 onChange={(e) => {
@@ -560,7 +562,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={questioner.didYouUseToExerciseInThePast}
                 onChange={(e) => {
@@ -580,7 +582,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={
                   questioner.informationRelatedToFitnessAndExerciseThatYouWouldLikeToAdd
@@ -879,7 +881,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={
                   questioner.reasonWhyYouShouldNotParticipateInPhysicalActivity
@@ -902,7 +904,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={
                   questioner.takingAnyMedicationOfWhichWeShouldBeMadeAwareOf
@@ -925,7 +927,7 @@ export default function QuesionerComponent() {
               <input
                 type="text"
                 id="inputPassword5"
-                className="form-control"
+                className="form-control bg-transparent text-white"
                 aria-describedby="passwordHelpBlock"
                 value={questioner.majorOrMinorSurgeryShouldBeMadeAwareOf}
                 onChange={(e) => {

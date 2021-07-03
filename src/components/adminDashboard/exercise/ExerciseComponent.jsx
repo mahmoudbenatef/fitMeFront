@@ -7,7 +7,7 @@ export default function ExerciseComponent() {
   let { path, url } = useRouteMatch();
 
   return (
-    <div>
+    <>
       <Switch>
         <Route key={1} path={`${path}/create`}>
           <ExerciseFormComponent />
@@ -19,6 +19,6 @@ export default function ExerciseComponent() {
           <ListExerciseComponent />
         </Route>
       </Switch>
-    </div>
+    </>
   );
 }

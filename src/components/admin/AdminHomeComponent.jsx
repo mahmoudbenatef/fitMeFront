@@ -31,7 +31,12 @@ export default function AdminHomeComponent() {
   }, []);
 
   return (
-    <div id="container">
+    <div
+      id="container"
+      style={{
+        height: "92vh",
+      }}
+    >
       <Switch>
         <Route key={2} path={`${path}/categories`}>
           <CategoryProvider>
@@ -51,7 +56,7 @@ export default function AdminHomeComponent() {
         <Route path={`${path}/meals`}>
           <MealComponet />
         </Route>
-        <Route  path={`${path}/mealsList`}>
+        <Route path={`${path}/mealsList`}>
           <MealListComponet />
         </Route>
         <Route key={3} exact path={`${path}/camp/:id/plan`}>
