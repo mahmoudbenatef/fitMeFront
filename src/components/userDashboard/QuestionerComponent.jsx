@@ -49,7 +49,8 @@ export default function QuesionerComponent() {
     
             })
             :
-        ApiServices.saveQuestioner(questioner).then(() => {
+        ApiServices.saveQuestioner(questioner).then((data) => {
+            mySessionStorage.setCurrentUser(data.data);
             history.push("/user");
 
         }).catch(() => {
