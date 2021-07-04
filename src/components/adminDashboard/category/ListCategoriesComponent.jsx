@@ -1,9 +1,11 @@
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import { useContext, useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
 import { ApiServices } from "../../../API/ApiServices";
 import { categoryContext } from "../../../contexts/categoryContext";
 import LoadingCompoenet from "../../reusableComponents/LoadingComponent";
 import PaginationComponent from "../../reusableComponents/PaginationComponent";
-import {Table} from "react-bootstrap"
 
 export default function ({ changeState }) {
   const [categories, setCategories] = useState([]);
@@ -27,7 +29,7 @@ export default function ({ changeState }) {
         setCategories(data.data);
         setLoading(false);
       })
-      .catch(()=>{
+      .catch(() => {
         setLoading(false);
       });
   }, [catContext.newOneAdded, page]);
@@ -40,12 +42,12 @@ export default function ({ changeState }) {
           <div className="row justify-content-center mt-4 ">
             <div className="col-md-8 ">
               <Table striped bordered hover variant="dark">
-                <caption style={{color:"white"}}>List of categories</caption>
+                <caption style={{ color: "white" }}>List of categories</caption>
                 <thead key={-1}>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Category</th>
-                    <th colSpan={2} scope="col">
+                    <th colSpan={2} scope="col" className="text-center">
                       Actions
                     </th>
                   </tr>
@@ -54,34 +56,39 @@ export default function ({ changeState }) {
                   {categories.data &&
                     categories.data.length > 0 &&
                     categories.data.map((cat, index) => {
-                      return(
-                      <tr key={cat._id.toString()}>
-                        <td>{index + 1}</td>
-                        <td>{cat.label}</td>
-                        <td>
-                          <button
-                            className={"btn btn-warning"}
-                            onClick={() => {
-                              changeState({
-                                status: "edit",
-                                value: { ...cat },
-                              });
-                            }}
-                          >
-                            Edit
-                          </button>
-                        </td>
-                        <td>
-                          <button
-                            className={"btn btn-danger"}
-                            onClick={() => {
-                              setDeletedElement(cat._id);
-                            }}
-                          >
-                            delete
-                          </button>
-                        </td>
-                      </tr>);
+                      return (
+                        <tr key={cat._id.toString()}>
+                          <td>{index + 1}</td>
+                          <td>{cat.label}</td>
+                          <td className="text-center">
+                            <EditIcon
+                              style={{
+                                cursor: "pointer",
+                              }}
+                              fontSize="large"
+                              className="btn-warning text-white"
+                              onClick={() => {
+                                changeState({
+                                  status: "edit",
+                                  value: { ...cat },
+                                });
+                              }}
+                            />
+                          </td>
+                          <td className="text-center">
+                            <DeleteIcon
+                              fontSize="large"
+                              style={{
+                                cursor: "pointer",
+                              }}
+                              className="btn-danger"
+                              onClick={() => {
+                                setDeletedElement(cat._id);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      );
                     })}
                   {categories.data && categories.data.length === 0 && (
                     <tr>
@@ -93,7 +100,7 @@ export default function ({ changeState }) {
             </div>
           </div>
           <div className="row justify-content-center mt-4 ">
-            <div className="col-md-8 ">
+            <div className="d-flex justify-content-center ">
               <PaginationComponent
                 count={categories.count}
                 page={page}

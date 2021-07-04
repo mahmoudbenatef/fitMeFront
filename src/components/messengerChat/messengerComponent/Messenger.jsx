@@ -14,6 +14,7 @@ export default function Messenger(){
     const [currentConversation, setCurrentConversation] = useState(null) 
     const [conversations,setConversations]= useState([]);
     const[newConversation, setNewConversation]= useState(null)
+    const [refresh, setRefresh] = useState(0);
     const history = useHistory();
     useEffect(() => {
         
@@ -26,10 +27,12 @@ export default function Messenger(){
           const {data:data} =  await ApiServices.addNewConversation({users:newConversation.users})
         //   alert(JSON.stringify(data))
           setCurrentConversation(data)
+          setRefresh(refresh+1);
         }
         if(newConversation)
         {
             addNewConversation()
+           
         }
 
     },[newConversation])
@@ -43,7 +46,7 @@ export default function Messenger(){
         socket.current =io("ws://localhost:8900")
         socket.current.on("you got new Message", ()=>{
             // alert(newMessage)
-            setNewMessage(Math.floor((Math.random() * 100000) + 1))
+            setNewMessage(Math.floor((Math.random() * 100000000000000) + 1))
         })
         socket.current.emit("addUser",mySessionStorage.getCurrentUser()._id)
         socket.current.on("getUsers",users=>{
@@ -55,7 +58,7 @@ export default function Messenger(){
         <div className="messanger">
 
             <div className="conversations-wrapper">
-                <Conversations conversations={conversations} setConversations={setConversations} setCurrentConversation= {setCurrentConversation}/>
+                <Conversations conversations={conversations} refresh={refresh} setConversations={setConversations} setCurrentConversation= {setCurrentConversation}/>
 
             </div>
             <div className="chat-wrapper">

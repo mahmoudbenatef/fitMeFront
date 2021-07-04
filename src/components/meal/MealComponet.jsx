@@ -1,15 +1,12 @@
-import { InputLabel } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
-import React from "react";
-import { useEffect, useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-const BASE_URL = "http://localhost:3001/";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { BASE_URL } from "../../API/urls";
+
 const mealTypes = {
   breakfast: {
     id: "breakfast",
@@ -33,7 +30,7 @@ function MealComponet() {
   const [mealType, setMealType] = React.useState(mealTypes.breakfast.id);
   const [recipe, setRecipe] = useState("");
   const [name, setName] = useState("");
-  const [videoId,setvideoId]=useState("");
+  const [videoId, setvideoId] = useState("");
 
   const [notAllowedTo, setNotAllowedTo] = useState([]);
   const [notAllowedCat, setnotAllowedCat] = useState("");
@@ -51,7 +48,7 @@ function MealComponet() {
   const saveMeal = async (e) => {
     e.preventDefault();
     if (id) {
-      let mealToSave = await axios.patch(`${BASE_URL}meals/${id}`, {
+      let mealToSave = await axios.patch(`${BASE_URL}/meals/${id}`, {
         name,
         recipe,
         mealType,
@@ -60,7 +57,7 @@ function MealComponet() {
       });
       console.log(mealToSave);
     } else {
-      let mealToSave = await axios.post(`${BASE_URL}meals`, {
+      let mealToSave = await axios.post(`${BASE_URL}/meals`, {
         name,
         recipe,
         mealType,
@@ -73,7 +70,7 @@ function MealComponet() {
   useEffect(() => {
     const fetchApi = async () => {
       console.log("hello");
-      const categories = await axios.get(`${BASE_URL}category`);
+      const categories = await axios.get(`${BASE_URL}/category`);
       if (categories) {
         console.log();
         setNotAllowedTo([...categories.data.data]);
@@ -85,7 +82,7 @@ function MealComponet() {
     if (id) {
       const fetchApi = async () => {
         console.log("hello");
-        const currentMeal = await axios.get(`${BASE_URL}meals/${id}`);
+        const currentMeal = await axios.get(`${BASE_URL}/meals/${id}`);
         console.log(currentMeal.data);
         setName(currentMeal.data.name);
         setRecipe(currentMeal.data.recipe);
@@ -97,7 +94,7 @@ function MealComponet() {
     }
   }, []);
   return (
-    <div>
+    <div className="container">
       <Form className="mt-5 ml-3">
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
@@ -105,46 +102,50 @@ function MealComponet() {
             type="text"
             placeholder="Enter meal name"
             value={name}
+            className="bg-transparent text-white border "
             onChange={(e) => {
               setName(e.target.value);
             }}
           />
         </Form.Group>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Recipe</Form.Label>
+          <Form.Label className="mt-3">Recipe</Form.Label>
           <Form.Control
             as="textarea"
             placeholder="Enter meal recipe"
             value={recipe}
+            className="bg-transparent text-white "
             onChange={(e) => {
               setRecipe(e.target.value);
             }}
             rows={3}
           />
         </Form.Group>
-        <FormControl>
-          <InputLabel htmlFor="demo-simple-select-label" className="text-light mt-2">
-            Meal Type
-          </InputLabel>
-          <Select value={mealType} variant="filled" onChange={handelMealChange} className="text-light mb-3 ">
-            {Object.keys(mealTypes).map((key) => (
-              <MenuItem value={key}> {mealTypes[key].name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {/* <select value={notAllowedCat} onChange={handelNotAllowedCatChange}>
-          {notAllowedTo.map((cat) => (
-            <option key={cat._id} value={cat._id}>
-              {cat.label}
-            </option>
-          ))}
-        </select> */}
+        <Form.Group>
+          <FormControl>
+            <Form.Label className="mt-3">Meal Type</Form.Label>
+            <Select
+              value={mealType}
+              variant="filled"
+              onChange={handelMealChange}
+              className="text-light"
+              style={{
+                margin: "0",
+              }}
+            >
+              {Object.keys(mealTypes).map((key) => (
+                <MenuItem value={key}> {mealTypes[key].name}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Form.Group>
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Video Id</Form.Label>
+          <Form.Label className="mt-3">Video Id</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Video Id"
             value={videoId}
+            className="bg-transparent text-white mb-3 "
             onChange={(e) => {
               setvideoId(e.target.value);
             }}
